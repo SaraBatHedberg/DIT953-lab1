@@ -1,6 +1,17 @@
 import java.awt.*;
 
-public class Car {
+public class Car implements Movable {
+    public void move() {
+
+    }
+
+    public void turnLeft() {
+
+    }
+
+    public void turnRight(){
+
+    }
 
     public int nrDoors; // Number of doors on the car
     public double enginePower; // Engine power of the car
