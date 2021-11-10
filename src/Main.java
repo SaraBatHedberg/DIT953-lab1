@@ -21,7 +21,7 @@ public class Main {
         MyCar.move();
         MyCar.move();
         MyCar.move();
-        out.println(MyCar.x+" "+MyCar.y);
+        out.println(MyCar.getX()+" "+MyCar.getY());
 
     }
 }

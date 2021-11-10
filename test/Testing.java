@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
@@ -6,51 +7,53 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class Testing {
+    Car saab;
+    Car volvo;
+
+    @BeforeEach
+    public void init() {
+        saab = new Saab95();
+        volvo = new Volvo240();
+    }
     @Test
     public void TestSaabNrDoors() {
-        Car saab = new Saab95();
         assertEquals(2, saab.getNrDoors());
     }
     @Test
     public void TestSaabEnginePower() {
-        Car saab = new Saab95();
         assertEquals(125, saab.getEnginePower());
     }
     @Test
     public void TestSaabCurrentSpeed() {
-        Car saab = new Saab95();
         assertEquals(0, saab.getCurrentSpeed());
     }
     @Test
     public void TestSaabColor() {
-        Car saab = new Saab95();
         assertEquals(Color.red, saab.getColor());
     }
     @Test
     public void TestSaabIncrementSpeed() {
-        Car saab = new Saab95();
         saab.incrementSpeed(1);
-        assertEquals(1.25, saab.currentSpeed);
+        assertEquals(1.25, saab.getCurrentSpeed());
     }
     @Test
     public void TestSaabDecrementSpeed() {
-        Car saab = new Saab95();
         saab.decrementSpeed(1);
-        assertEquals(-1.25, saab.currentSpeed);
+        assertEquals(-1.25, saab.getCurrentSpeed());
     }
     @Test
     public void TestSaabTurboOn() {
         Saab95 saab = new Saab95();
         saab.setTurboOn();
         saab.incrementSpeed(1);
-        assertEquals(1.625, saab.currentSpeed);
+        assertEquals(1.625, saab.getCurrentSpeed());
     }
     @Test
     public void TestSaabTurboOn2() {
         Saab95 saab = new Saab95();
         saab.setTurboOn();
         saab.decrementSpeed(1);
-        assertEquals(-1.625, saab.currentSpeed);
+        assertEquals(-1.625, saab.getCurrentSpeed());
     }
     @Test
     public void TestSaabTurboOff() {
@@ -58,59 +61,54 @@ public class Testing {
         saab.setTurboOn();
         saab.setTurboOff();
         assertFalse(saab.turboOn);
-    } 
+    }
     @Test
     public void TestVolvoObject() {
-        Car saab = new Volvo240();
-        assertEquals(4, saab.getNrDoors());
+        assertEquals(4, volvo.getNrDoors());
     }
     @Test
     public void TestVolvoEnginePower() {
-        Car saab = new Volvo240();
-        assertEquals(100, saab.getEnginePower());
+        assertEquals(100, volvo.getEnginePower());
     }
     @Test
     public void TestVolvoCurrentSpeed() {
-        Car saab = new Volvo240();
-        assertEquals(0, saab.getCurrentSpeed());
+        assertEquals(0, volvo.getCurrentSpeed());
     }
     @Test
     public void TestVolvoColor() {
-        Car saab = new Volvo240();
-        assertEquals(Color.black, saab.getColor());
+        assertEquals(Color.black, volvo.getColor());
     }
     @Test
     public void TestVolvoIncrementSpeed() {
-        Car saab = new Volvo240();
-        saab.incrementSpeed(1);
-        assertEquals(1.25, saab.currentSpeed);
+        volvo.incrementSpeed(1);
+        assertEquals(1.25, volvo.getCurrentSpeed());
     }
     @Test
     public void TestVolvoDecSpeed() {
-        Car saab = new Volvo240();
-        saab.decrementSpeed(1);
-        assertEquals(0, saab.currentSpeed);
+        volvo.decrementSpeed(1);
+        assertEquals(0, volvo.getCurrentSpeed());
     }
     @Test
     public void TestMove() {
-        Car saab = new Saab95();
         saab.startEngine();
         saab.move();
         assertEquals(0.1, saab.y);
     }
     @Test
     public void TestTurnRight() {
-        Car saab = new Saab95();
         saab.startEngine();
         saab.turnRight();
+        saab.move();
         saab.turnRight();
+        saab.move();
         saab.turnRight();
+        saab.move();
         saab.turnRight();
+        saab.move();
         assertEquals(Directions.UP, saab.getDirection());
     }
     @Test
     public void TestTurnLeft() {
-        Car saab = new Saab95();
         saab.startEngine();
         saab.turnLeft();
         saab.turnLeft();
@@ -118,14 +116,12 @@ public class Testing {
     }
     @Test
     public void TestSetColor() {
-        Car saab = new Saab95();
         saab.setColor(Color.PINK);
         assertEquals(Color.PINK, saab.getColor());
     }
 
     @Test
     public void TestGas() {
-        Car saab = new Saab95();
         saab.startEngine();
         saab.move();
         saab.gas(0.5);
@@ -133,12 +129,9 @@ public class Testing {
     }
     @Test
     public void TestBrake() {
-        Car saab = new Saab95();
         saab.startEngine();
         saab.move();
         saab.brake(0.5);
         assertEquals(-0.525, saab.getCurrentSpeed());
     }
-
-
 }

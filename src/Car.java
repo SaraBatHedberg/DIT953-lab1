@@ -1,18 +1,21 @@
 import java.awt.*;
+import java.util.ArrayList;
 
 public abstract class Car implements Movable {
 
-    public int nrDoors; // Number of doors on the car
-    public double enginePower; // Engine power of the car
-    public double currentSpeed; // The current speed of the car
-    public Color color; // Color of the car
-    public String modelName; // The car model name
-    double x = 0;
-    double y = 0;
+    protected int nrDoors; // Number of doors on the car
+    protected double enginePower; // Engine power of the car
+    protected double currentSpeed; // The current speed of the car
+    protected Color color; // Color of the car
+    protected String modelName; // The car model name
+    private double x = 0;
+    private double y = 0;
     private Directions CurrentDirection = Directions.UP;
     private final Directions[] ListOfDirections = {Directions.UP, Directions.RIGHT, Directions.DOWN, Directions.LEFT};
     int index;
 
+    public double getX() { return x;}
+    public double getY(){return y;}
     public Directions getDirection() { return CurrentDirection; }
 
     public int getNrDoors(){
@@ -90,7 +93,7 @@ public abstract class Car implements Movable {
             CurrentDirection = ListOfDirections[index+1];
         }
     }
-
+    
     private void FindIndexOfDirection() {
         for (int i = 0; i < ListOfDirections.length; i++) {
             if (ListOfDirections[i] == CurrentDirection) {
