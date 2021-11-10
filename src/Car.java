@@ -9,10 +9,11 @@ public abstract class Car implements Movable {
     public String modelName; // The car model name
     double x = 0;
     double y = 0;
-    Directions CurrentDirection = Directions.UP;
-    Directions[] ListOfDirections = {Directions.UP, Directions.RIGHT, Directions.DOWN, Directions.LEFT};
+    private Directions CurrentDirection = Directions.UP;
+    private final Directions[] ListOfDirections = {Directions.UP, Directions.RIGHT, Directions.DOWN, Directions.LEFT};
     int index;
 
+    public Directions getDirection() { return CurrentDirection; }
 
     public int getNrDoors(){
         return nrDoors;
@@ -73,8 +74,8 @@ public abstract class Car implements Movable {
     @Override
     public void turnLeft() {
         FindIndexOfDirection();
-        if (ListOfDirections[index] == Directions.LEFT) {
-            CurrentDirection = Directions.DOWN;
+        if (ListOfDirections[index] == Directions.UP) {
+            CurrentDirection = Directions.LEFT;
         } else {
             CurrentDirection = ListOfDirections[index-1];
         }
