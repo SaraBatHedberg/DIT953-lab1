@@ -1,3 +1,5 @@
+package car;
+
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -15,12 +17,13 @@ public abstract class Car implements Movable {
     int index;
 
     public double getX() { return x;}
-    public double getY(){return y;}
+    public double getY(){ return y;}
     public Directions getDirection() { return CurrentDirection; }
 
     public int getNrDoors(){
         return nrDoors;
     }
+
     public double getEnginePower(){
         return enginePower;
     }
@@ -51,16 +54,17 @@ public abstract class Car implements Movable {
 
     abstract void decrementSpeed(double amount);
 
-    // TODO fix this method according to lab pm
-    public void gas(double amount){
-        if ((0 <= amount) && (amount <= 1)) {
-            incrementSpeed(amount);
+    public void gas(double amount) throws IllegalArgumentException{
+        if ((0 > amount) || (amount > 1)) {
+            throw new IllegalArgumentException("Please enter a gas amount between 0 and 1");
         }
         incrementSpeed(amount);
     }
 
-    // TODO fix this method according to lab pm
-    public void brake(double amount){
+    public void brake(double amount) throws IllegalArgumentException{
+        if ((0 > amount) || (amount > 1)) {
+            throw new IllegalArgumentException("Please enter a brake amount between 0 and 1");
+        }
         decrementSpeed(amount);
     }
 

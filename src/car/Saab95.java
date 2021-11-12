@@ -1,6 +1,10 @@
+package car;
+
+import car.Car;
+
 import java.awt.*;
 
-public class Saab95 extends Car{
+public class Saab95 extends Car {
 
     public boolean turboOn;
 
@@ -9,7 +13,7 @@ public class Saab95 extends Car{
         color = Color.red;
         enginePower = 125;
 	    turboOn = false;
-        modelName = "Saab95";
+        modelName = "car.Saab95";
         stopEngine();
     }
 
@@ -31,7 +35,8 @@ public class Saab95 extends Car{
 
     @Override
     void incrementSpeed(double amount) {
-        currentSpeed = getCurrentSpeed() + speedFactor() * amount;
+
+        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, enginePower);
     }
 
     @Override

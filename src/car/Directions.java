@@ -1,3 +1,5 @@
+package car;
+
 public enum Directions {
     UP,
     LEFT,

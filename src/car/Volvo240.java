@@ -1,3 +1,7 @@
+package car;
+
+import car.Car;
+
 import java.awt.*;
 
 public class Volvo240 extends Car {
@@ -8,7 +12,7 @@ public class Volvo240 extends Car {
         nrDoors = 4;
         color = Color.black;
         enginePower = 100;
-        modelName = "Volvo240";
+        modelName = "car.Volvo240";
         stopEngine();
     }
 
