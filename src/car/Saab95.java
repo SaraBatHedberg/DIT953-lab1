@@ -12,14 +12,14 @@ public class Saab95 extends Car {
         nrDoors = 2;
         color = Color.red;
         enginePower = 125;
-	    turboOn = false;
+        turboOn = false;
         modelName = "car.Saab95";
         stopEngine();
     }
 
 
     public void setTurboOn(){
-	    turboOn = true;
+        turboOn = true;
     }
 
     public void setTurboOff() {
@@ -41,7 +41,7 @@ public class Saab95 extends Car {
 
     @Override
     void decrementSpeed(double amount) {
-        currentSpeed = getCurrentSpeed() - speedFactor() * amount;
+        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
 
     }
 }

@@ -67,7 +67,7 @@ public class Testing {
     }
 
     @Test
-    public void TestMove() {
+    public void TestYCoordinate() {
         saab.startEngine();
         saab.move();
         assertEquals(0.1, saab.getY());
@@ -121,7 +121,7 @@ public class Testing {
     public void TestSaabBrakeWithValidAmount() {
         saab.startEngine();
         saab.brake(0.5);
-        assertEquals(-0.525, saab.getCurrentSpeed());
+        assertEquals(0, saab.getCurrentSpeed());
     }
     @Test
     public void TestSaabBrakeWithInvalidAmount() {

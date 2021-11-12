@@ -10,11 +10,12 @@ public abstract class Car implements Movable {
     protected double currentSpeed; // The current speed of the car
     protected Color color; // Color of the car
     protected String modelName; // The car model name
-    private double x = 0;
-    private double y = 0;
+    private double x = 0; // x-coordinate of the moving car
+    private double y = 0; // y-coordinate of the moving car
     private Directions CurrentDirection = Directions.UP;
     private final Directions[] ListOfDirections = {Directions.UP, Directions.RIGHT, Directions.DOWN, Directions.LEFT};
-    int index;
+    //List of possible directions
+    private int index;
 
     public double getX() { return x;}
     public double getY(){ return y;}
@@ -97,7 +98,7 @@ public abstract class Car implements Movable {
             CurrentDirection = ListOfDirections[index+1];
         }
     }
-    
+
     private void FindIndexOfDirection() {
         for (int i = 0; i < ListOfDirections.length; i++) {
             if (ListOfDirections[i] == CurrentDirection) {
@@ -106,5 +107,4 @@ public abstract class Car implements Movable {
             }
         }
     }
-
 }
