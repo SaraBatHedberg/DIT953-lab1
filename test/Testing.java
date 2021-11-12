@@ -65,6 +65,7 @@ public class Testing {
 
         assertEquals(Color.black, volvo.getColor());
     }
+
     @Test
     public void TestMove() {
         saab.startEngine();
