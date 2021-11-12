@@ -69,7 +69,7 @@ public class Testing {
     public void TestMove() {
         saab.startEngine();
         saab.move();
-        assertEquals(0.1, saab.y);
+        assertEquals(0.1, saab.getY());
     }
     @Test
     public void TestXCoordinate() {
