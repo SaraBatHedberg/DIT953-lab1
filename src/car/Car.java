@@ -13,7 +13,7 @@ public abstract class Car implements Movable {
     private double y = 0; // y-coordinate of the moving car
     private Directions CurrentDirection = Directions.UP;
     private final Directions[] ListOfDirections = {Directions.UP, Directions.RIGHT, Directions.DOWN, Directions.LEFT};
-    //List of possible directions
+                                //List of possible directions
     private int index;
 
     public double getX() { return x;}
@@ -97,7 +97,7 @@ public abstract class Car implements Movable {
             CurrentDirection = ListOfDirections[index+1];
         }
     }
-
+    
     private void FindIndexOfDirection() {
         for (int i = 0; i < ListOfDirections.length; i++) {
             if (ListOfDirections[i] == CurrentDirection) {
