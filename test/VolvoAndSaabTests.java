@@ -9,7 +9,7 @@ import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class Testing {
+public class VolvoAndSaabTests {
     Car saab;
     Car volvo;
 
