@@ -47,7 +47,6 @@ public abstract class Car implements Movable {
      */
     private int index; // Index of car's current direction
 
-
     /**
      * Returns X coordinate for the car.
      * @return int X
@@ -58,6 +57,14 @@ public abstract class Car implements Movable {
      * @return int Y
      */
     public double getY(){ return y;}
+
+    protected void setX(double x) {
+        this.x = x;
+    }
+
+    protected void setY(double y) {
+        this.y = y;
+    }
 
     /**
      * Returns vehicles current facing direction.

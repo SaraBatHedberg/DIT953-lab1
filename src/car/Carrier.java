@@ -13,6 +13,7 @@ public class Carrier extends Car {
         color = Color.darkGray;
         enginePower = 200;
         modelName = "truck.Carrier";
+        rampUp = true;
         stopEngine();
     }
     @Override

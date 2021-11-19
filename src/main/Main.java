@@ -43,5 +43,6 @@ public class Main {
         Truck.move();
         out.println(Truck.getAngle() + " + " + Truck.getY());
         Truck.raisePlatform(1);
+
     }
 }
