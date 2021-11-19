@@ -92,6 +92,10 @@ public class VolvoAndSaabTests {
         saab.move();
         assertEquals(Directions.UP, saab.getDirection());
     }
+
+    /**
+     * Testing to turn 90 degrees to the left for a car.
+     */
     @Test
     public void TestTurnLeft() {
         saab.startEngine();
@@ -99,42 +103,67 @@ public class VolvoAndSaabTests {
         saab.turnLeft();
         assertEquals(Directions.DOWN, saab.getDirection());
     }
+
+    /**
+     * Testing to set a new color for a car.
+     */
     @Test
     public void TestSetColor() {
         saab.setColor(Color.PINK);
         assertEquals(Color.PINK, saab.getColor());
     }
-
+    /**
+     * Testing Saab gas with a valid amount (double).
+     */
     @Test
     public void TestSaabGasWithValidAmount() {
         saab.startEngine();
         saab.gas(0.5);
         assertEquals(0.725, saab.getCurrentSpeed());
     }
+    /**
+     * Testing Saab gas with an in invalid amount (double).
+     */
     @Test
     public void TestSaabGasWithInvalidAmount() {
         saab.startEngine();
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> saab.gas(1.2));
         assertEquals("Please enter a gas amount between 0 and 1", exception.getMessage());
     }
+
+    /**
+     * Testing to brake a Saab with a valid amount (double).
+     */
     @Test
     public void TestSaabBrakeWithValidAmount() {
         saab.startEngine();
         saab.brake(0.5);
         assertEquals(0, saab.getCurrentSpeed());
     }
+
+    /**
+     * Testing to brake a Saab with an invalid amount (double).
+     */
     @Test
     public void TestSaabBrakeWithInvalidAmount() {
         saab.startEngine();
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> saab.brake(-0.3));
         assertEquals("Please enter a brake amount between 0 and 1", exception.getMessage());
     }
+
+    /**
+     * Testing Volvo gas with a valid amount (double).
+     */
     @Test
     public void TestVolvoGasWithValidAmount() {
         volvo.startEngine();
         volvo.gas(0.95);
         assertEquals(1.2875, volvo.getCurrentSpeed());
     }
+
+    /**
+     * Testing to brake a Volvo with a valid amount (double).
+     */
     @Test
     public void TestVolvoBrakeWithValidAmount() {
         volvo.startEngine();

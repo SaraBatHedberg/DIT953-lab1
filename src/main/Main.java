@@ -24,6 +24,7 @@ public class Main {
 
         Scania Truck = new Scania();
         Truck.startEngine();
+        Truck.gas(1);
         Truck.brake(1);
         out.println(Truck.getCurrentSpeed());
         Truck.raisePlatform(45);

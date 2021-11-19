@@ -15,23 +15,27 @@ public class ScaniaTests {
     //private final PrintStream PrintedMessage = System.out;
     private final ByteArrayOutputStream PrintedMessageCaptor = new ByteArrayOutputStream();
 
+    /**
+     * Creates a new Scania every test.
+     */
     @BeforeEach
     public void init() {
         Truck = new Scania();
     }
 
+    /**
+     * Testing methods to raise and lower platform.
+     */
     @Test
-    public void TestRaisePlatform() {
-        Truck.raisePlatform(45);
-        assertEquals(45, Truck.getAngle());
-    }
-
-    @Test
-    public void TestLowerPlatform() {
+    public void TestLowerAndRaisePlatform() {
         Truck.raisePlatform(70);
         Truck.lowerPlatform(30);
         assertEquals(40, Truck.getAngle());
     }
+
+    /**
+     * Testing the gas function with valid amount (double)
+     */
     @Test
     public void TestScaniaGasValid() {
         Truck.startEngine();
@@ -39,6 +43,9 @@ public class ScaniaTests {
         assertEquals(0.5, Truck.getCurrentSpeed());
     }
 
+    /**
+     * Testing the gas with invalid amount (double).
+     */
     @Test
     public void TestScaniaGasInvalid() {
         Truck.startEngine();
@@ -46,6 +53,9 @@ public class ScaniaTests {
         assertEquals("Please enter a gas amount between 0 and 1", exception.getMessage());
     }
 
+    /**
+     * Testing the gas while the platform's angle != 0.
+     */
     @Test
     public void TestScaniaGasWhileRaisedPlatform() {
         System.setOut(new PrintStream(PrintedMessageCaptor));
@@ -55,6 +65,9 @@ public class ScaniaTests {
         assertEquals("Please ensure platform is lowered to 0 degrees before accelerating", PrintedMessageCaptor.toString().trim());
     }
 
+    /**
+     * Testing to raise the platform while vehicle has speed greater than 0.
+     */
     @Test
     public void TestScaniaRaisePlatformUnderSpeed() {
         System.setOut(new PrintStream(PrintedMessageCaptor));
@@ -63,6 +76,9 @@ public class ScaniaTests {
         assertEquals("*pip sound* Please ensure truck is stationary before moving the platform", PrintedMessageCaptor.toString().trim());
     }
 
+    /**
+     * Testing to lower the platform while vehicle has speed greater than 0.
+     */
     @Test
     public void TestScaniaLowerPlatformUnderSpeed() {
         System.setOut(new PrintStream(PrintedMessageCaptor));
@@ -72,6 +88,9 @@ public class ScaniaTests {
         assertEquals("*pip sound* Please ensure truck is stationary before moving the platform", PrintedMessageCaptor.toString().trim());
     }
 
+    /**
+     * Testing move while the platform's angle != 0.
+     */
     @Test
     public void TestScaniaMoveWithRaisedPlatform() {
         System.setOut(new PrintStream(PrintedMessageCaptor));
@@ -87,5 +106,4 @@ public class ScaniaTests {
         Truck.brake(0.9);
         assertEquals(0, Truck.getCurrentSpeed());
     }
-
 }
