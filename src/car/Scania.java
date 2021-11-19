@@ -83,7 +83,10 @@ public class Scania extends Car {
         }
     }
 
-
+    /**
+     * Method calls the helper class Truck's implementation and sends necessary arguments.
+     * @return Double with the value enginePower times the constant 0.004.
+     */
     @Override
     double speedFactor() { return helper.speedFactor(enginePower); }
 

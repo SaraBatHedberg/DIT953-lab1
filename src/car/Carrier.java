@@ -7,6 +7,9 @@ import java.awt.*;
  */
 public class Carrier extends Car {
 
+    private final TruckHelper helper = new TruckHelper();
+    private boolean rampUp;
+    private Stack<Car> loadedCars = new Stack<Car>();
 
     public Carrier(){
         nrDoors = 2;
