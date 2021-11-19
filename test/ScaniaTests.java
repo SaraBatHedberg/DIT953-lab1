@@ -31,6 +31,7 @@ public class ScaniaTests {
      */
     @Test
     public void TestLowerAndRaisePlatform() {
+        Truck.startEngine();
         Truck.raisePlatform(70);
         Truck.lowerPlatform(30);
         assertEquals(40, Truck.getAngle());
@@ -43,7 +44,7 @@ public class ScaniaTests {
     public void TestScaniaGasValid() {
         Truck.startEngine();
         Truck.gas(0.5);
-        assertEquals(0.5, Truck.getCurrentSpeed());
+        assertEquals(0.4, Truck.getCurrentSpeed());
     }
 
     /**
@@ -65,7 +66,8 @@ public class ScaniaTests {
         Truck.raisePlatform(45);
         Truck.startEngine();
         Truck.gas(1);
-        assertEquals("Please ensure platform is lowered to 0 degrees before accelerating", PrintedMessageCaptor.toString().trim());
+        assertEquals("Please ensure the platform is lowered and the engine turned on, then gas to gain speed"
+                , PrintedMessageCaptor.toString().trim());
     }
 
     /**
@@ -76,7 +78,8 @@ public class ScaniaTests {
         System.setOut(new PrintStream(PrintedMessageCaptor));
         Truck.startEngine();
         Truck.raisePlatform(45);
-        assertEquals("*pip sound* Please ensure truck is stationary before moving the platform", PrintedMessageCaptor.toString().trim());
+        assertEquals("*pip sound* Please ensure truck is stationary and the car engine turned off before moving the platform"
+                , PrintedMessageCaptor.toString().trim());
     }
 
     /**
@@ -88,7 +91,8 @@ public class ScaniaTests {
         Truck.raisePlatform(70);
         Truck.startEngine();
         Truck.lowerPlatform(30);
-        assertEquals("*pip sound* Please ensure truck is stationary before moving the platform", PrintedMessageCaptor.toString().trim());
+        assertEquals("*pip sound* Please ensure truck is stationary before moving the platform"
+                , PrintedMessageCaptor.toString().trim());
     }
 
     /**
@@ -100,7 +104,8 @@ public class ScaniaTests {
         Truck.raisePlatform(45);
         Truck.startEngine();
         Truck.move();
-        assertEquals("Please lower the platform before moving, then gas to gain speed", PrintedMessageCaptor.toString().trim());
+        assertEquals("*pip sound* Please ensure truck is stationary before moving the platform"
+                , PrintedMessageCaptor.toString().trim());
     }
 
     /**
@@ -109,8 +114,9 @@ public class ScaniaTests {
     @Test
     public void TestScaniaMove() {
         Truck.startEngine();
+        Truck.gas(0.5);
         Truck.move();
-        assertEquals(0.1, Truck.getY());
+        assertEquals(0.4, Truck.getY());
     }
 
     /**

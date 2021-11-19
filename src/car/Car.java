@@ -140,7 +140,11 @@ public abstract class Car implements Movable {
      * Sets the current speed of the vehicle to 0.0 (should we add a instance attribute "Engine" (boolean)?).
      */
     public void stopEngine(){
-        currentSpeed = 0;
+        if (currentSpeed == 0) {
+            engineOn = false;
+        } else {
+            System.out.println("Brake before stopping the engine");
+        }
     }
 
     /**
@@ -164,10 +168,14 @@ public abstract class Car implements Movable {
      * @throws IllegalArgumentException amount is higher or lower than the interval.
      */
     public void gas(double amount) throws IllegalArgumentException{
-        if ((0 > amount) || (amount > 1)) {
-            throw new IllegalArgumentException("Please enter a gas amount between 0 and 1");
+        if (engineOn){
+            if ((0 > amount) || (amount > 1)) {
+                throw new IllegalArgumentException("Please enter a gas amount between 0 and 1");
+            }
+            incrementSpeed(amount);
+        } else {
+            System.out.println("*Car's engine is turned off*");
         }
-        incrementSpeed(amount);
     }
 
     /**
@@ -176,10 +184,14 @@ public abstract class Car implements Movable {
      * @throws IllegalArgumentException amount is higher or lower than the interval.
      */
     public void brake(double amount) throws IllegalArgumentException{
-        if ((0 > amount) || (amount > 1)) {
-            throw new IllegalArgumentException("Please enter a brake amount between 0 and 1");
+        if (engineOn){
+            if ((0 > amount) || (amount > 1)) {
+                throw new IllegalArgumentException("Please enter a brake amount between 0 and 1");
+            }
+            decrementSpeed(amount);
+        } else {
+            System.out.println("*Car's engine is turned off*");
         }
-        decrementSpeed(amount);
     }
 
     /**

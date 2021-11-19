@@ -36,12 +36,13 @@ public class Scania extends Car {
      * @param degree Integer for platform's movement in degrees. Interval (0-70).
      */
     public void raisePlatform (int degree){
-        if (currentSpeed == 0) {
+            if (currentSpeed == 0) {
             angle = Math.min(angle + degree, 70);
-        }else {
-            System.out.println("*pip sound* Please ensure truck is stationary before moving the platform");
-        }
-    }
+            } else{
+                System.out.println("*pip sound* Please ensure truck is stationary before moving the platform");
+        }}
+
+
 
     /**
      * Method lowers the platform with a certain amount of degrees.
@@ -49,12 +50,11 @@ public class Scania extends Car {
      * @param degree Integer for platform's movement in degrees. Interval (0-70).
      */
     public void lowerPlatform (int degree){
-        if (currentSpeed == 0) {
-        angle = Math.max(angle - degree, 0);
-        }else {
-            System.out.println("*pip sound* Please ensure truck is stationary before moving the platform");
-        }
-    }
+            if (currentSpeed == 0) {
+            angle = Math.max(angle - degree, 0);
+            } else{
+                System.out.println("*pip sound* Please ensure truck is stationary before moving the platform");
+    }}
 
     /**
      * Method calls superclass's original implementation in case the platform's position is valid.
@@ -63,10 +63,10 @@ public class Scania extends Car {
      */
     @Override
     public void gas(double amount){
-        if (angle == 0) {
+        if (angle == 0 && engineOn) {
             super.gas(amount);
         } else {
-            System.out.println("Please ensure platform is lowered to 0 degrees before accelerating");
+            System.out.println("Please ensure platform is lowered and the engine turned on before accelerating");
         }
     }
 
@@ -76,10 +76,10 @@ public class Scania extends Car {
      */
     @Override
     public void move() {
-        if (angle == 0) {
+        if (angle == 0 && engineOn) {
             super.move();
         } else {
-            System.out.println("Please lower the platform before moving, then gas to gain speed");
+            System.out.println("Please ensure the platform is lowered and the engine turned on, then gas to gain speed");
         }
     }
 

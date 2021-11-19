@@ -106,6 +106,7 @@ public class VolvoAndSaabTests {
     @Test
     public void TestYCoordinate() {
         saab.startEngine();
+        saab.gas(0.5);
         saab.move();
         assertEquals(0.1, saab.getY());
     }
@@ -115,6 +116,7 @@ public class VolvoAndSaabTests {
     @Test
     public void TestXCoordinate() {
         saab.startEngine();
+        saab.gas(0.5);
         saab.turnRight();
         saab.move();
         assertEquals(0.1, saab.getX());
@@ -163,7 +165,7 @@ public class VolvoAndSaabTests {
     public void TestSaabGasWithValidAmount() {
         saab.startEngine();
         saab.gas(0.5);
-        assertEquals(0.725, saab.getCurrentSpeed());
+        assertEquals(0.625, saab.getCurrentSpeed());
     }
     /**
      * Testing Saab gas with an in invalid amount (double).
@@ -202,7 +204,7 @@ public class VolvoAndSaabTests {
     public void TestVolvoGasWithValidAmount() {
         volvo.startEngine();
         volvo.gas(0.95);
-        assertEquals(1.2875, volvo.getCurrentSpeed());
+        assertEquals(1.1875, volvo.getCurrentSpeed());
     }
 
     /**

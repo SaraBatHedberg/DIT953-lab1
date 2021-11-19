@@ -4,7 +4,7 @@ import java.awt.*;
 import java.util.Stack;
 
 /**
- * Class Carrier is a
+ * Class Carrier is a Type of car that can load other cars onto it.
  */
 public class Carrier extends Car {
 
@@ -75,8 +75,16 @@ public class Carrier extends Car {
         }
     }
 
+    /**
+     * Method to check if car is close enough to be loaded onto carrier
+     * @param carToCheck Car (which distance to the carrier will be calculated)
+     * @return boolean (false if not close enough)
+     */
     private boolean carProximity (Car carToCheck) {
-        return (carToCheck.getX() - getX() <= 3) && (carToCheck.getY() - getY() <= 3);
+        return (((carToCheck.getX() - getX() <= 3)
+                || (carToCheck.getX() - getX() <= -3))
+                && (((carToCheck.getY() - getY() <= 3)
+                || (carToCheck.getY() - getY() <= -3))));
     }
 
     /**
@@ -153,12 +161,3 @@ public class Carrier extends Car {
 
 
 
-/*
-
-methods:
-Load off
-Load on
-
-
-
- */
