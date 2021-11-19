@@ -22,6 +22,14 @@ public class Carrier extends Car {
 
     }
 
+    public String getRampStatus() {
+        if (rampUp) {
+            return ("Ramp is currently up");
+        } else {
+            return ("Ramp is currently down");
+        }
+    }
+
     /**
      * Method calls the helper class Truck's implementation and sends necessary arguments.
      * @return Double with the value enginePower times the constant 0.004.
@@ -75,10 +83,15 @@ public class Carrier extends Car {
      * Method loads a car to the carrier if carProximity is true and the loaded vehicle has the type Car.
      * @param carToLoad The parameter has the type Car.
      */
-    public void loadCar (Car carToLoad) {
-        if (carProximity(carToLoad) && carToLoad.getClass() != Carrier.class) {
+    public void loadCar(Car carToLoad) {
+        if ((carProximity(carToLoad)) && (carToLoad.getClass() != Carrier.class)) {
             loadedCars.push(carToLoad);
-        }else {
+            carToLoad.setLoaded(true);
+            System.out.println("Successfully loaded car");
+        } else if (carToLoad.getClass() == Carrier.class){
+            System.out.println("Cannot load a carrier onto a carrier");
+        }
+        else {
             System.out.println("Please drive closer before loading a car onto the carrier");
         }
 
@@ -96,28 +109,38 @@ public class Carrier extends Car {
     public void unloadCar () {
         if (!rampUp){
             Car unloadedCar = loadedCars.pop();
-            switch(getDirection()) {
-                case UP -> {
-                    unloadedCar.setX(getX());
-                    unloadedCar.setY(getY() - 1);
-                }
-                case LEFT -> {
-                    unloadedCar.setX(getX() + 1);
-                    unloadedCar.setY(getY());
-                }
-                case RIGHT -> {
-                    unloadedCar.setX(getX() - 1);
-                    unloadedCar.setY(getY());
-                }
-                case DOWN -> {
-                    unloadedCar.setX(getX());
-                    unloadedCar.setY(getY() + 1);
-                }
-            }
+            setUnloadedCarNewLocation(unloadedCar);
+            unloadedCar.setLoaded(false);
+            System.out.println("Successfully unloaded car");
         } else {
             System.out.println("Please lower the ramp before attempting to unload a car");
         }
 
+    }
+
+    /**
+     * Method sets a new location to the newly unloaded car, based on the carrier's direction when unloading.
+     * @param unloadedCar The parameter is a reference to the object of the unloaded car.
+     */
+    private void setUnloadedCarNewLocation(Car unloadedCar) {
+        switch(getDirection()) {
+            case UP -> {
+                unloadedCar.setX(getX());
+                unloadedCar.setY(getY() - 1);
+            }
+            case LEFT -> {
+                unloadedCar.setX(getX() + 1);
+                unloadedCar.setY(getY());
+            }
+            case RIGHT -> {
+                unloadedCar.setX(getX() - 1);
+                unloadedCar.setY(getY());
+            }
+            case DOWN -> {
+                unloadedCar.setX(getX());
+                unloadedCar.setY(getY() + 1);
+            }
+        }
     }
 }
 

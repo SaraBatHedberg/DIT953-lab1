@@ -1,9 +1,6 @@
 package main;
 
-import car.Car;
-import car.Saab95;
-import car.Scania;
-import car.Volvo240;
+import car.*;
 
 import static java.lang.System.*;
 
@@ -16,33 +13,50 @@ public class Main {
      * @param args neccesary to run the code
      */
     public static void main(String [] args) {
-        Car MyCar = new Volvo240();
-        //out.println(MyCar.getColor());
+        Volvo240 volvo1 = new Volvo240();
+        Volvo240 volvo2 = new Volvo240();
+        Volvo240 volvo3 = new Volvo240();
+        Volvo240 volvo4 = new Volvo240();
+        Volvo240 volvo5 = new Volvo240();
+        Carrier errorbil = new Carrier();
+        Carrier flakbil = new Carrier();
+        Volvo240 testCar = new Volvo240();
 
-        MyCar.startEngine();
-        //out.println(MyCar.getCurrentSpeed());
-        for (int i = 0; i < 100; i++) {
-            MyCar.gas(1);
-        }
-        MyCar.move();
-        //out.println(MyCar.getX()+" "+MyCar.getY());
+        flakbil.loadCar(testCar);
+        flakbil.startEngine();
+        flakbil.gas(1);
+        flakbil.gas(1);
+        flakbil.gas(1);
+        flakbil.move();
+        System.out.println(flakbil.getX() + " " + flakbil.getY() + "    " + testCar.getX() + " " + testCar.getY());
+
+        volvo2.startEngine();
+        volvo2.move();
+        volvo3.startEngine();
+        volvo3.turnRight();
+        volvo3.move();
+        volvo4.startEngine();
+        volvo4.turnRight();
+        volvo4.turnRight();
+        volvo4.move();
+        volvo5.startEngine();
+        volvo5.turnLeft();
+        volvo5.move();
+
+        flakbil.loadCar(volvo1);
+        flakbil.loadCar(volvo2);
+        flakbil.loadCar(volvo3);
+        flakbil.loadCar(volvo4);
+        flakbil.loadCar(volvo5);
+        flakbil.loadCar(errorbil);
 
 
 
-        Scania Truck = new Scania();
-        Truck.startEngine();
-        Truck.gas(1);
-        Truck.brake(1);
-        out.println(Truck.getCurrentSpeed());
-        Truck.raisePlatform(45);
-        out.println(Truck.getAngle());
-        Truck.gas(1);
-        Truck.move();
-        out.println(Truck.getAngle() + " + " + Truck.getY());
-        Truck.lowerPlatform(45);
-        Truck.move();
-        out.println(Truck.getAngle() + " + " + Truck.getY());
-        Truck.raisePlatform(1);
+
+        // System.out.println("Volvo's location: " + volvo1.getX() + " " + volvo1.getY());
+        // System.out.println("Flakbil's location: " + flakbil.getX() + " " + flakbil.getY());
+
+
 
     }
 }

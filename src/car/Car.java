@@ -46,6 +46,14 @@ public abstract class Car implements Movable {
      * Index for vehicle's current direction from list of directions.
      */
     private int index; // Index of car's current direction
+    protected boolean engineOn;
+
+    public boolean isLoaded() {
+        return loaded;
+    }
+
+    protected boolean loaded = false;
+
 
     /**
      * Returns X coordinate for the car.
@@ -71,6 +79,14 @@ public abstract class Car implements Movable {
      * @return Direction
      */
     public Directions getDirection() { return CurrentDirection; }
+
+    protected void setLoaded(boolean loaded) {
+        this.loaded = loaded;
+    }
+
+    protected boolean getLoaded(boolean loaded) {
+        return loaded;
+    }
 
     /**
      * Returns number of doors on vehicle.
@@ -116,7 +132,8 @@ public abstract class Car implements Movable {
      * Sets the current speed of the vehicle to 0.1 (can the vehicle "gas" without starting the engine?).
      */
     public void startEngine(){
-        currentSpeed = 0.1;
+        if (!loaded)
+            {engineOn = true;}
     }
 
     /**
@@ -170,11 +187,15 @@ public abstract class Car implements Movable {
      */
     @Override
     public void move() {
-        switch(CurrentDirection) {
-            case UP -> y = (y + currentSpeed);
-            case LEFT -> x = (x - currentSpeed);
-            case RIGHT -> x = (x + currentSpeed);
-            case DOWN -> y = (y - currentSpeed);
+        if (engineOn) {
+            switch (CurrentDirection) {
+                case UP -> y = (y + currentSpeed);
+                case LEFT -> x = (x - currentSpeed);
+                case RIGHT -> x = (x + currentSpeed);
+                case DOWN -> y = (y - currentSpeed);
+            }
+        } else {
+            System.out.println("Cannot move with engine turned off");
         }
     }
 
