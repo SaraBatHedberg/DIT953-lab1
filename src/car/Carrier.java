@@ -96,6 +96,10 @@ public class Carrier extends Car {
         }
 
     }
+
+    /**
+     * Method calls the super class's implementation of move to move the carrier and move any loaded cars.
+     */
     @Override
     public void move(){
         super.move();
@@ -106,8 +110,11 @@ public class Carrier extends Car {
             }
     }
 
-    public void unloadCar () {
-        if (!rampUp){
+    /**
+     * Method which unloads the most recent loaded car from the carrier. (last in first out)
+     */
+    public void unloadCar() {
+        if ((!rampUp) && (loadedCars.size() != 0)){
             Car unloadedCar = loadedCars.pop();
             setUnloadedCarNewLocation(unloadedCar);
             unloadedCar.setLoaded(false);
