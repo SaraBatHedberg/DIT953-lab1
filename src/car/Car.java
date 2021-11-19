@@ -2,15 +2,41 @@ package car;
 
 import java.awt.*;
 
+/**
+ * this class creates a new object of the type Car.
+ */
 public abstract class Car implements Movable {
-
+    /**
+     * Number of doors for a specific car.
+     */
     protected int nrDoors; // Number of doors on the car
+    /**
+     * Engine Power for a specific car.
+     */
     protected double enginePower; // Engine power of the car
+    /**
+     * The current speed of the car.
+     */
     protected double currentSpeed; // The current speed of the car
+    /**
+     * Color of the created car
+     */
     protected Color color; // Color of the car
+    /**
+     * The car model name.
+     */
     protected String modelName; // The car model name
+    /**
+     * X-coordinate of the moving car.
+     */
     private double x = 0; // x-coordinate of the moving car
+    /**
+     * Y-coordinate of the moving car.
+     */
     private double y = 0; // y-coordinate of the moving car
+    /**
+     * A default start value for the direction of all the created cars.
+     */
     private Directions CurrentDirection = Directions.UP;
     /**
      * Immutable array of all possible direction.

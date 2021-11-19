@@ -12,5 +12,9 @@ public interface Movable {
      * Allows an object to turn to the left.
      */
     void turnLeft();
+
+    /**
+     * Allows an object to turn to the right.
+     */
     void turnRight();
 }

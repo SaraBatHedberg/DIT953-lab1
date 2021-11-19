@@ -3,9 +3,16 @@ package car;
 import java.awt.*;
 
 
+/**
+ * This class is an extension (subclass) of the class Car.
+ * Objects created in this class will have the type Scania.
+ */
 public class Scania extends Car {
     int angle;
-
+    TruckHelper helper = new TruckHelper();
+    /**
+     * A constructor that contains the instance variables starting values for every Scania.
+     */
     public Scania (){
         nrDoors = 2;
         color = Color.green;
@@ -15,10 +22,19 @@ public class Scania extends Car {
         stopEngine();
     }
 
+    /**
+     * A getter method for the angle of the platform.
+     * @return Method returns an integer angle for the current position of the platform.
+     */
     public int getAngle() {
         return angle;
     }
 
+    /**
+     * Method raises the platform with a certain amount of degrees.
+     * Method prints an error message if the truck isn't stationary when calling.
+     * @param degree Integer for platform's movement in degrees. Interval (0-70).
+     */
     public void raisePlatform (int degree){
         if (currentSpeed == 0) {
             angle = Math.min(angle + degree, 70);
@@ -27,6 +43,11 @@ public class Scania extends Car {
         }
     }
 
+    /**
+     * Method lowers the platform with a certain amount of degrees.
+     * Method prints an error message if the truck isn't stationary when calling.
+     * @param degree Integer for platform's movement in degrees. Interval (0-70).
+     */
     public void lowerPlatform (int degree){
         if (currentSpeed == 0) {
         angle = Math.max(angle - degree, 0);
@@ -35,6 +56,11 @@ public class Scania extends Car {
         }
     }
 
+    /**
+     * Method calls superclass's original implementation in case the platform's position is valid.
+     * Method prints an error message if the platform isn't on 0 degrees.
+     * @param amount Double between interval [0,1].
+     */
     @Override
     public void gas(double amount){
         if (angle == 0) {
