@@ -7,7 +7,14 @@ import car.Volvo240;
 
 import static java.lang.System.*;
 
+/**
+ * A main class for running the code
+ */
 public class Main {
+    /**
+     * method to run the code
+     * @param args neccesary to run the code
+     */
     public static void main(String [] args) {
         Car MyCar = new Volvo240();
         //out.println(MyCar.getColor());

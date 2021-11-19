@@ -9,10 +9,13 @@ import java.io.PrintStream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+/**
+ * A class for JUnit tests using Scania classes.
+ */
 public class ScaniaTests {
 
     Scania Truck;
-    //private final PrintStream PrintedMessage = System.out;
+
     private final ByteArrayOutputStream PrintedMessageCaptor = new ByteArrayOutputStream();
 
     /**

@@ -9,35 +9,58 @@ import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * A class for JUnit tests using Volvo240 and Saab95 classes. Also tests the class Car using those
+ */
 public class VolvoAndSaabTests {
     Car saab;
     Car volvo;
 
+    /**
+     * creates a new Saab95 and a new Volvo240 for each test.
+     */
     @BeforeEach
     public void init() {
         saab = new Saab95();
         volvo = new Volvo240();
     }
+
+    /**
+     * Tests the code getNrDoors from Car using a Saab95.
+     */
     @Test
     public void TestSaabGetNrDoors() {
 
         assertEquals(2, saab.getNrDoors());
     }
+
+    /**
+     * Tests the code GetEnginePower from Car using a Saab95.
+     */
     @Test
     public void TestSaabGetEnginePower() {
 
         assertEquals(125, saab.getEnginePower());
     }
+    /**
+     * Tests the code GetCurrentSpeed from Car using a Saab95.
+     */
     @Test
     public void TestSaabGetCurrentSpeed() {
 
         assertEquals(0, saab.getCurrentSpeed());
     }
+    /**
+     * Tests the code GetColor from Car using a Saab95.
+     */
     @Test
     public void TestSaabGetColor() {
 
         assertEquals(Color.red, saab.getColor());
     }
+    /**
+     * Tests the code SetTurboOff from Saab95 using a Saab95.
+     */
     @Test
     public void TestSaabSetTurboOff() {
         Saab95 saab = new Saab95();
@@ -45,33 +68,50 @@ public class VolvoAndSaabTests {
         saab.setTurboOff();
         assertFalse(saab.turboOn);
     }
+    /**
+     * Tests the code GetNrDoors from Car using a Volvo240.
+     */
     @Test
     public void TestVolvoGetNrDoors() {
 
         assertEquals(4, volvo.getNrDoors());
     }
+    /**
+     * Tests the code getEnginePower from Car using a Volvo240.
+     */
     @Test
     public void TestVolvoGetEnginePower() {
 
         assertEquals(100, volvo.getEnginePower());
     }
+    /**
+     * Tests the code GetCurrentSpeed from Car using a Volvo240.
+     */
     @Test
     public void TestVolvoGetCurrentSpeed() {
 
         assertEquals(0, volvo.getCurrentSpeed());
     }
+    /**
+     * Tests the code GetColor from Car using a Volvo240.
+     */
     @Test
     public void TestVolvoGetColor() {
 
         assertEquals(Color.black, volvo.getColor());
     }
-
+    /**
+     * Tests the code GetY, StartEngine and move from Car using a Saab95.
+     */
     @Test
     public void TestYCoordinate() {
         saab.startEngine();
         saab.move();
         assertEquals(0.1, saab.getY());
     }
+    /**
+     * Tests the code GetX, StartEngine, TurnRight and move from Car using a Saab95.
+     */
     @Test
     public void TestXCoordinate() {
         saab.startEngine();
@@ -79,6 +119,10 @@ public class VolvoAndSaabTests {
         saab.move();
         assertEquals(0.1, saab.getX());
     }
+
+    /**
+     * Testing to turn 90 degrees to the right for a car and to check if the list of directions is looped through.
+     */
     @Test
     public void TestTurnRight() {
         saab.startEngine();
