@@ -13,8 +13,8 @@ public class CarrierTests {
 
     @BeforeEach
     public void init() {
-        carrier = new Carrier();
-        testcar = new Volvo240();
+        carrier = new Carrier("ABC001");
+        testcar = new Volvo240("ABC002");
     }
 
     @Test

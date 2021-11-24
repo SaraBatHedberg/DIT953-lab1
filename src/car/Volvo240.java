@@ -18,11 +18,12 @@ public class Volvo240 extends Car {
     /**
      * A constructor that contains the instance variables starting values for every Saab95.
      */
-    public Volvo240(){
+    public Volvo240(String plate){
         nrDoors = 4;
         color = Color.black;
         enginePower = 100;
         modelName = "car.Volvo240";
+        this.plate = plate;
         stopEngine();
     }
 

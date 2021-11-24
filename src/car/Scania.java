@@ -13,12 +13,13 @@ public class Scania extends Car {
     /**
      * A constructor that contains the instance variables starting values for every Scania.
      */
-    public Scania (){
+    public Scania(String plate){
         nrDoors = 2;
         color = Color.green;
         enginePower = 200;
         modelName = "truck.Scania";
         angle = 0;
+        this.plate = plate;
         stopEngine();
     }
 
@@ -38,7 +39,7 @@ public class Scania extends Car {
     public void raisePlatform (int degree){
             if (currentSpeed == 0) {
             angle = Math.min(angle + degree, 70);
-            } else{
+            } else {
                 System.out.println("*pip sound* Please ensure truck is stationary before moving the platform");
         }}
 
@@ -52,7 +53,7 @@ public class Scania extends Car {
     public void lowerPlatform (int degree){
             if (currentSpeed == 0) {
             angle = Math.max(angle - degree, 0);
-            } else{
+            } else {
                 System.out.println("*pip sound* Please ensure truck is stationary before moving the platform");
     }}
 

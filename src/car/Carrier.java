@@ -10,14 +10,16 @@ public class Carrier extends Car {
 
     private final TruckHelper helper = new TruckHelper();
     private boolean rampUp;
+
     private Stack<Car> loadedCars = new Stack<Car>();
 
-    public Carrier(){
+    public Carrier(String plate){
         nrDoors = 2;
         color = Color.darkGray;
         enginePower = 200;
         modelName = "truck.Carrier";
         rampUp = true;
+        this.plate = plate;
         stopEngine();
 
     }
@@ -81,10 +83,7 @@ public class Carrier extends Car {
      * @return boolean (false if not close enough)
      */
     private boolean carProximity (Car carToCheck) {
-        return (((carToCheck.getX() - getX() <= 3)
-                || (carToCheck.getX() - getX() <= -3))
-                && (((carToCheck.getY() - getY() <= 3)
-                || (carToCheck.getY() - getY() <= -3))));
+        return (proxCheck.CheckProximity(carToCheck,this));
     }
 
     /**

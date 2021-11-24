@@ -46,47 +46,54 @@ public abstract class Car implements Movable {
      * Index for vehicle's current direction from list of directions.
      */
     private int index; // Index of car's current direction
+    /**
+     * Tells if the engine is on or off
+     */
     protected boolean engineOn;
+    /**
+     * Tells if the car is loaded onto a carrier or not
+     */
+    protected boolean loaded = false;
+    /**
+     * License plate for the car
+     */
+    protected String plate;
 
-    public boolean isLoaded() {
-        return loaded;
+
+
+    ///////////////////////////// GETTERS ///////////////////////////////
+
+    /**
+     * Get license plate for the car
+     * @return String
+     */
+    public String getLicensePlate() {
+        return plate;
     }
 
-    protected boolean loaded = false;
-
+    /**
+     * Returns loaded status for the car
+     * @return boolean
+     */
+    public boolean isLoaded() { return loaded; }
 
     /**
      * Returns X coordinate for the car.
      * @return int X
      */
     public double getX() { return x;}
+
     /**
      * Returns Y coordinate for the car.
      * @return int Y
      */
     public double getY(){ return y;}
 
-    protected void setX(double x) {
-        this.x = x;
-    }
-
-    protected void setY(double y) {
-        this.y = y;
-    }
-
     /**
      * Returns vehicles current facing direction.
      * @return Direction
      */
     public Directions getDirection() { return CurrentDirection; }
-
-    protected void setLoaded(boolean loaded) {
-        this.loaded = loaded;
-    }
-
-    protected boolean getLoaded(boolean loaded) {
-        return loaded;
-    }
 
     /**
      * Returns number of doors on vehicle.
@@ -120,6 +127,10 @@ public abstract class Car implements Movable {
         return color;
     }
 
+
+
+    ///////////////////////////// SETTERS ///////////////////////////////
+
     /**
      * Sets a new color for the vehicle.
      * @param clr Color
@@ -127,6 +138,34 @@ public abstract class Car implements Movable {
     public void setColor(Color clr){
         color = clr;
     }
+
+    /**
+     * Makes a cars loaded attribute true
+     * @param loaded boolean
+     */
+    protected void setLoaded(boolean loaded) {
+        this.loaded = loaded;
+    }
+
+    /**
+     * Sets new X coordinate for the car
+     * @param x int
+     */
+    protected void setX(double x) {
+        this.x = x;
+    }
+
+    /**
+     * Sets new Y coordinate for the car
+     * @param y int
+     */
+    protected void setY(double y) {
+        this.y = y;
+    }
+
+
+
+    ///////////////////////////// METHODS ///////////////////////////////
 
     /**
      * Sets the current speed of the vehicle to 0.1 (can the vehicle "gas" without starting the engine?).

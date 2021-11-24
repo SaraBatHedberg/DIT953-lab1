@@ -6,6 +6,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,13 +18,15 @@ public class VolvoAndSaabTests {
     Car saab;
     Car volvo;
 
+    private final ByteArrayOutputStream PrintedMessageCaptor = new ByteArrayOutputStream();
+
     /**
      * creates a new Saab95 and a new Volvo240 for each test.
      */
     @BeforeEach
     public void init() {
-        saab = new Saab95();
-        volvo = new Volvo240();
+        saab = new Saab95("ABC123");
+        volvo = new Volvo240("AAA111");
     }
 
     /**
@@ -63,7 +67,7 @@ public class VolvoAndSaabTests {
      */
     @Test
     public void TestSaabSetTurboOff() {
-        Saab95 saab = new Saab95();
+        Saab95 saab = new Saab95("ABC122");
         saab.setTurboOn();
         saab.setTurboOff();
         assertFalse(saab.turboOn);
@@ -108,7 +112,7 @@ public class VolvoAndSaabTests {
         saab.startEngine();
         saab.gas(0.5);
         saab.move();
-        assertEquals(0.1, saab.getY());
+        assertEquals(0.625, saab.getY());
     }
     /**
      * Tests the code GetX, StartEngine, TurnRight and move from Car using a Saab95.
@@ -119,7 +123,7 @@ public class VolvoAndSaabTests {
         saab.gas(0.5);
         saab.turnRight();
         saab.move();
-        assertEquals(0.1, saab.getX());
+        assertEquals(0.625, saab.getX());
     }
 
     /**
@@ -215,5 +219,35 @@ public class VolvoAndSaabTests {
         volvo.startEngine();
         volvo.brake(0.1);
         assertEquals(0, volvo.getCurrentSpeed());
+    }
+
+    @Test
+    public void TestStopEngineWithSpeed() {
+        System.setOut(new PrintStream(PrintedMessageCaptor));
+        volvo.startEngine();
+        volvo.gas(1);
+        volvo.stopEngine();
+        assertEquals("Brake before stopping the engine", PrintedMessageCaptor.toString().trim());
+    }
+
+    @Test
+    public void TestGasEngineOff() {
+        System.setOut(new PrintStream(PrintedMessageCaptor));
+        volvo.gas(1);
+        assertEquals("*Car's engine is turned off*", PrintedMessageCaptor.toString().trim());
+    }
+
+    @Test
+    public void TestBrakeEngineOff() {
+        System.setOut(new PrintStream(PrintedMessageCaptor));
+        volvo.brake(1);
+        assertEquals("*Car's engine is turned off*", PrintedMessageCaptor.toString().trim());
+    }
+
+    @Test
+    public void TestMoveEngineOff() {
+        System.setOut(new PrintStream(PrintedMessageCaptor));
+        volvo.move();
+        assertEquals("Cannot move with engine turned off", PrintedMessageCaptor.toString().trim());
     }
 }

@@ -23,7 +23,7 @@ public class ScaniaTests {
      */
     @BeforeEach
     public void init() {
-        Truck = new Scania();
+        Truck = new Scania("ABC555");
     }
 
     /**
@@ -127,5 +127,14 @@ public class ScaniaTests {
         Truck.startEngine();
         Truck.brake(0.9);
         assertEquals(0, Truck.getCurrentSpeed());
+    }
+    /**
+     * Testing gas with engine turned off.
+     */
+    @Test
+    public void TestScaniaGasEngineOff() {
+        System.setOut(new PrintStream(PrintedMessageCaptor));
+        Truck.gas(1);
+        assertEquals("Please ensure platform is lowered and the engine turned on before accelerating", PrintedMessageCaptor.toString().trim());
     }
 }

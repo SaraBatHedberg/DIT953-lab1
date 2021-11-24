@@ -13,22 +13,13 @@ public class Main {
      * @param args neccesary to run the code
      */
     public static void main(String [] args) {
-        Volvo240 volvo1 = new Volvo240();
-        Volvo240 volvo2 = new Volvo240();
-        Volvo240 volvo3 = new Volvo240();
-        Volvo240 volvo4 = new Volvo240();
-        Volvo240 volvo5 = new Volvo240();
-        Carrier errorbil = new Carrier();
-        Carrier flakbil = new Carrier();
-        Volvo240 testCar = new Volvo240();
-
-        flakbil.loadCar(testCar);
-        flakbil.startEngine();
-        flakbil.gas(1);
-        flakbil.gas(1);
-        flakbil.gas(1);
-        flakbil.move();
-        System.out.println(flakbil.getX() + " " + flakbil.getY() + "    " + testCar.getX() + " " + testCar.getY());
+        Volvo240 volvo1 = new Volvo240("AAA111");
+        Volvo240 volvo2 = new Volvo240("BBB222");
+        Volvo240 volvo3 = new Volvo240("CCC333");
+        Volvo240 volvo4 = new Volvo240("DDD444");
+        Volvo240 volvo5 = new Volvo240("EEE555");
+        Carrier errorbil = new Carrier("FFF666");
+        Carrier flakbil = new Carrier("GGG777");
 
         volvo2.startEngine();
         volvo2.move();

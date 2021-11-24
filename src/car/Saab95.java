@@ -17,12 +17,13 @@ public class Saab95 extends Car {
     /**
      * A constructor that contains the instance variables starting values for every Saab95.
      */
-    public Saab95(){
+    public Saab95(String plate){
         nrDoors = 2;
         color = Color.red;
         enginePower = 125;
 	    turboOn = false;
         modelName = "car.Saab95";
+        this.plate = plate;
         stopEngine();
     }
 
