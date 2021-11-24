@@ -77,8 +77,10 @@ public class ScaniaTests {
     public void TestScaniaRaisePlatformUnderSpeed() {
         System.setOut(new PrintStream(PrintedMessageCaptor));
         Truck.startEngine();
+        Truck.gas(1);
+        Truck.move();
         Truck.raisePlatform(45);
-        assertEquals("*pip sound* Please ensure truck is stationary and the car engine turned off before moving the platform"
+        assertEquals("*pip sound* Please ensure truck is stationary before moving the platform"
                 , PrintedMessageCaptor.toString().trim());
     }
 

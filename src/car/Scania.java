@@ -83,14 +83,12 @@ public class Scania extends Car {
             System.out.println("Please ensure the platform is lowered and the engine turned on, then gas to gain speed");
         }
     }
-
     /**
      * Method calls the helper class Truck's implementation and sends necessary arguments.
      * @return Double with the value enginePower times the constant 0.004.
      */
     @Override
     double speedFactor() { return helper.speedFactor(enginePower); }
-
     /**
      * Method calls the helper class Truck's implementation and sends necessary arguments.
      * @param amount Double in the interval [0, 1]

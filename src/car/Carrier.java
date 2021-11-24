@@ -23,6 +23,9 @@ public class Carrier extends Car {
         stopEngine();
 
     }
+    public Stack<Car> getLoadedCars() {
+            return loadedCars;
+        }
 
     public String getRampStatus() {
         if (rampUp) {
@@ -31,7 +34,6 @@ public class Carrier extends Car {
             return ("Ramp is currently down");
         }
     }
-
     /**
      * Method calls the helper class Truck's implementation and sends necessary arguments.
      * @return Double with the value enginePower times the constant 0.004.
@@ -91,7 +93,7 @@ public class Carrier extends Car {
      * @param carToLoad The parameter has the type Car.
      */
     public void loadCar(Car carToLoad) {
-        if ((carProximity(carToLoad)) && (carToLoad.getClass() != Carrier.class)) {
+        if ((carProximity(carToLoad)) && (carToLoad.getClass() != Carrier.class) && !rampUp) {
             loadedCars.push(carToLoad);
             carToLoad.setLoaded(true);
             System.out.println("Successfully loaded car");
