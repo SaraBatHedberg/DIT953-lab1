@@ -66,7 +66,7 @@ public class ScaniaTests {
         Truck.raisePlatform(45);
         Truck.startEngine();
         Truck.gas(1);
-        assertEquals("Please ensure the platform is lowered and the engine turned on, then gas to gain speed"
+        assertEquals("Please ensure platform is lowered and the engine turned on before accelerating"
                 , PrintedMessageCaptor.toString().trim());
     }
 
@@ -90,8 +90,9 @@ public class ScaniaTests {
     @Test
     public void TestScaniaLowerPlatformUnderSpeed() {
         System.setOut(new PrintStream(PrintedMessageCaptor));
-        Truck.raisePlatform(70);
         Truck.startEngine();
+        Truck.gas(0.5);
+        Truck.move();
         Truck.lowerPlatform(30);
         assertEquals("*pip sound* Please ensure truck is stationary before moving the platform"
                 , PrintedMessageCaptor.toString().trim());
@@ -106,7 +107,7 @@ public class ScaniaTests {
         Truck.raisePlatform(45);
         Truck.startEngine();
         Truck.move();
-        assertEquals("*pip sound* Please ensure truck is stationary before moving the platform"
+        assertEquals("Please ensure the platform is lowered and the engine turned on, then gas to gain speed"
                 , PrintedMessageCaptor.toString().trim());
     }
 

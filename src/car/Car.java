@@ -5,7 +5,7 @@ import java.awt.*;
 /**
  * this class creates a new object of the type Car.
  */
-public abstract class Car implements Movable {
+public abstract class Car implements Movable, ICoordinates {
     /**
      * Number of doors for a specific car.
      */

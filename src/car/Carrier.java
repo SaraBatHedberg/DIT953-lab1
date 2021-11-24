@@ -9,6 +9,7 @@ import java.util.Stack;
 public class Carrier extends Car {
 
     private final TruckHelper helper = new TruckHelper();
+    private final ProximityChecker proxCheck = new ProximityChecker();
     private boolean rampUp;
 
     private Stack<Car> loadedCars = new Stack<Car>();
@@ -97,6 +98,8 @@ public class Carrier extends Car {
             loadedCars.push(carToLoad);
             carToLoad.setLoaded(true);
             System.out.println("Successfully loaded car");
+        } else  if (rampUp){
+            System.out.println("Please lower the ramp before attempting to load a car");
         } else if (carToLoad.getClass() == Carrier.class){
             System.out.println("Cannot load a carrier onto a carrier");
         }
@@ -128,6 +131,8 @@ public class Carrier extends Car {
             setUnloadedCarNewLocation(unloadedCar);
             unloadedCar.setLoaded(false);
             System.out.println("Successfully unloaded car");
+        } else if (loadedCars.size() == 0){
+            System.out.println("Cannot unload a car when the carrier is empty");
         } else {
             System.out.println("Please lower the ramp before attempting to unload a car");
         }
