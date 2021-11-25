@@ -82,18 +82,6 @@ public abstract class Car extends WorldObjects implements IMovable {
     public boolean isLoaded() { return loaded; }
 
     /**
-     * Returns X coordinate for the car.
-     * @return int X
-     */
-    public double getX() { return x;}
-
-    /**
-     * Returns Y coordinate for the car.
-     * @return int Y
-     */
-    public double getY(){ return y;}
-
-    /**
      * Returns vehicles current facing direction.
      * @return Direction
      */
@@ -151,22 +139,11 @@ public abstract class Car extends WorldObjects implements IMovable {
         this.loaded = loaded;
     }
 
-    /**
-     * Sets new X coordinate for the car
-     * @param x int
-     */
-    protected void setX(double x) {
-        this.x = x;
-    }
 
-    /**
-     * Sets new Y coordinate for the car
-     * @param y int
-     */
-    protected void setY(double y) {
+    protected void setLocation(double x, double y) {
+        this.x = x;
         this.y = y;
     }
-
 
 
     ///////////////////////////// METHODS ///////////////////////////////

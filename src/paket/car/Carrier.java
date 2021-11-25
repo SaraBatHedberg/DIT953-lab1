@@ -12,6 +12,7 @@ public class Carrier extends Truck {
 
     private final ProximityChecker proxCheck = new ProximityChecker();
     private boolean rampUp;
+    private final int capacity;
 
     private Stack<Car> loadedCars = new Stack<Car>();
 
@@ -37,26 +38,6 @@ public class Carrier extends Truck {
             return ("Ramp is currently down");
         }
     }
-    /**
-     * Method calls the helper class Truck's implementation and sends necessary arguments.
-     * @return Double with the value enginePower times the constant 0.004.
-     */
-    @Override
-    double speedFactor() { return helper.speedFactor(enginePower); }
-
-    /**
-     * Method calls the helper class Truck's implementation and sends necessary arguments.
-     * @param amount Double in the interval [0, 1]
-     */
-    @Override
-    void incrementSpeed(double amount) { currentSpeed = helper.incrementSpeed(amount, currentSpeed, enginePower); }
-
-    /**
-     * Method calls the helper class Truck's implementation and sends necessary arguments.
-     * @param amount Double in the interval [0, 1]
-     */
-    @Override
-    void decrementSpeed(double amount) { currentSpeed = helper.decrementSpeed(amount, currentSpeed, enginePower); }
 
     /**
      * Method lowers the ramp by making the rampUp boolean False.
@@ -96,7 +77,11 @@ public class Carrier extends Truck {
      * @param carToLoad The parameter has the type Car.
      */
     public void loadCar(Car carToLoad) {
-        if ((carProximity(carToLoad)) && (carToLoad.getClass() != Carrier.class) && !rampUp) {
+        if (rampUp) {System.out.println("Please lower the ramp before attempting to load a paket.car");}
+        else if (carToLoad.getClass() == Carrier.class){System.out.println("Cannot load a carrier onto a carrier");}
+        else if (!carProximity(carToLoad)) {System.out.println("Please drive closer before loading a paket.car onto the carrier");}
+        else if (loadedCars.size() == capacity) {System.out.println("The carrier is currently full and cannot load another car");}
+        else {
             loadedCars.push(carToLoad);
             carToLoad.setLoaded(true);
             System.out.println("Successfully loaded paket.car");}
@@ -110,8 +95,7 @@ public class Carrier extends Truck {
         super.move();
         if (loadedCars.size() > 0)
             for (Car car: loadedCars){
-                car.setX(getX());
-                car.setY(getY());
+                car.setLocation(getLocation()[0], getLocation()[1]);
             }
     }
 
@@ -138,22 +122,10 @@ public class Carrier extends Truck {
      */
     private void setUnloadedCarNewLocation(Car unloadedCar) {
         switch(getDirection()) {
-            case UP -> {
-                unloadedCar.setX(getX());
-                unloadedCar.setY(getY() - 1);
-            }
-            case LEFT -> {
-                unloadedCar.setX(getX() + 1);
-                unloadedCar.setY(getY());
-            }
-            case RIGHT -> {
-                unloadedCar.setX(getX() - 1);
-                unloadedCar.setY(getY());
-            }
-            case DOWN -> {
-                unloadedCar.setX(getX());
-                unloadedCar.setY(getY() + 1);
-            }
+            case UP -> unloadedCar.setLocation(getLocation()[0], getLocation()[1] - 1);
+            case LEFT -> unloadedCar.setLocation(getLocation()[0] + 1, getLocation()[1]);
+            case RIGHT -> unloadedCar.setLocation(getLocation()[0] - 1, getLocation()[1]);
+            case DOWN -> unloadedCar.setLocation(getLocation()[0], getLocation()[1] + 1);
         }
     }
 }

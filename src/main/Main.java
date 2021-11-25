@@ -11,7 +11,7 @@ import static java.lang.System.*;
 public class Main {
     /**
      * method to run the code
-     * @param args neccesary to run the code
+     * @param args necessary to run the code
      */
     public static void main(String [] args) {
 

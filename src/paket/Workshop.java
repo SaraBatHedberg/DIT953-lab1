@@ -34,10 +34,11 @@ public class Workshop <T extends Car> extends WorldObjects{
     public void receiveCar(T carToLoad){
         if (listOfCars.size() < capacity && proxCheck.CheckProximity(this,carToLoad)) {
             listOfCars.add(carToLoad.getLicensePlate());
-        } else if (listOfCars.size() == capacity){                              //////// CONTINUE
-            {
+            System.out.println("Car received");
+        } else if (listOfCars.size() == capacity){
                 System.out.println("This workshop is currently full");
-            }
+        } else {
+            System.out.println("Please drive closer before attempting to enter the workshop");
         }
     }
 
@@ -57,14 +58,5 @@ public class Workshop <T extends Car> extends WorldObjects{
 
 
     ////////////////////// GETTERS ///////////////////////
-    @Override
-    public double getX() {
-        return x;
-    }
-
-    @Override
-    public double getY() {
-        return y;
-    }
 
 }
