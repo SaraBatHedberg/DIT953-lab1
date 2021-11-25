@@ -130,6 +130,8 @@ public class Carrier extends Truck {
             System.out.println("Successfully unloaded paket.car");        }
     }
 
+    ////////////////////////// SETTERS ////////////////////
+
     /**
      * Method sets a new location to the newly unloaded paket.car, based on the carrier's direction when unloading.
      * @param unloadedCar The parameter is a reference to the object of the unloaded paket.car.

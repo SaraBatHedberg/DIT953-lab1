@@ -9,7 +9,7 @@ import java.awt.*;
  */
 public class Scania extends Car {
     int angle;
-    private final TruckHelper helper = new TruckHelper();
+
     /**
      * A constructor that contains the instance variables starting values for every Scania.
      */
