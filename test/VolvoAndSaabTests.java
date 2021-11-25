@@ -1,7 +1,7 @@
-import car.Car;
-import car.Directions;
-import car.Saab95;
-import car.Volvo240;
+import paket.car.Car;
+import paket.Directions;
+import paket.car.Saab95;
+import paket.car.Volvo240;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -112,7 +112,7 @@ public class VolvoAndSaabTests {
         saab.startEngine();
         saab.gas(0.5);
         saab.move();
-        assertEquals(0.625, saab.getY());
+        assertEquals(0.625, saab.getLocation()[1]);
     }
     /**
      * Tests the code GetX, StartEngine, TurnRight and move from Car using a Saab95.
@@ -123,11 +123,11 @@ public class VolvoAndSaabTests {
         saab.gas(0.5);
         saab.turnRight();
         saab.move();
-        assertEquals(0.625, saab.getX());
+        assertEquals(0.625, saab.getLocation()[0]);
     }
 
     /**
-     * Testing to turn 90 degrees to the right for a car and to check if the list of directions is looped through.
+     * Testing to turn 90 degrees to the right for a paket.car and to check if the list of directions is looped through.
      */
     @Test
     public void TestTurnRight() {
@@ -144,7 +144,7 @@ public class VolvoAndSaabTests {
     }
 
     /**
-     * Testing to turn 90 degrees to the left for a car.
+     * Testing to turn 90 degrees to the left for a paket.car.
      */
     @Test
     public void TestTurnLeft() {
@@ -155,7 +155,7 @@ public class VolvoAndSaabTests {
     }
 
     /**
-     * Testing to set a new color for a car.
+     * Testing to set a new color for a paket.car.
      */
     @Test
     public void TestSetColor() {

@@ -1,39 +1,43 @@
-package car;
+package paket.car;
+
+import paket.Directions;
+import paket.IMovable;
+import paket.WorldObjects;
 
 import java.awt.*;
 
 /**
  * this class creates a new object of the type Car.
  */
-public abstract class Car implements Movable, ICoordinates {
+public abstract class Car extends WorldObjects implements IMovable {
     /**
-     * Number of doors for a specific car.
+     * Number of doors for a specific paket.car.
      */
-    protected int nrDoors; // Number of doors on the car
+    protected int nrDoors; // Number of doors on the paket.car
     /**
-     * Engine Power for a specific car.
+     * Engine Power for a specific paket.car.
      */
-    protected double enginePower; // Engine power of the car
+    protected double enginePower; // Engine power of the paket.car
     /**
-     * The current speed of the car.
+     * The current speed of the paket.car.
      */
-    protected double currentSpeed; // The current speed of the car
+    protected double currentSpeed; // The current speed of the paket.car
     /**
-     * Color of the created car
+     * Color of the created paket.car
      */
-    protected Color color; // Color of the car
+    protected Color color; // Color of the paket.car
     /**
-     * The car model name.
+     * The paket.car model name.
      */
-    protected String modelName; // The car model name
+    protected String modelName; // The paket.car model name
     /**
-     * X-coordinate of the moving car.
+     * X-coordinate of the moving paket.car.
      */
-    private double x = 0; // x-coordinate of the moving car
+    private double x = 0; // x-coordinate of the moving paket.car
     /**
-     * Y-coordinate of the moving car.
+     * Y-coordinate of the moving paket.car.
      */
-    private double y = 0; // y-coordinate of the moving car
+    private double y = 0; // y-coordinate of the moving paket.car
     /**
      * A default start value for the direction of all the created cars.
      */
@@ -45,17 +49,17 @@ public abstract class Car implements Movable, ICoordinates {
     /**
      * Index for vehicle's current direction from list of directions.
      */
-    private int index; // Index of car's current direction
+    private int index; // Index of paket.car's current direction
     /**
      * Tells if the engine is on or off
      */
     protected boolean engineOn;
     /**
-     * Tells if the car is loaded onto a carrier or not
+     * Tells if the paket.car is loaded onto a carrier or not
      */
     protected boolean loaded = false;
     /**
-     * License plate for the car
+     * License plate for the paket.car
      */
     protected String plate;
 
@@ -64,7 +68,7 @@ public abstract class Car implements Movable, ICoordinates {
     ///////////////////////////// GETTERS ///////////////////////////////
 
     /**
-     * Get license plate for the car
+     * Get license plate for the paket.car
      * @return String
      */
     public String getLicensePlate() {
@@ -72,7 +76,7 @@ public abstract class Car implements Movable, ICoordinates {
     }
 
     /**
-     * Returns loaded status for the car
+     * Returns loaded status for the paket.car
      * @return boolean
      */
     public boolean isLoaded() { return loaded; }

@@ -1,11 +1,9 @@
-package car;
-
-import car.Car;
+package paket.car;
 
 import java.awt.*;
 
 /**
- * Creates a class for a car of the type Saab95, that extends Car.
+ * Creates a class for a paket.car of the type Saab95, that extends Car.
  */
 public class Saab95 extends Car {
 
@@ -22,7 +20,7 @@ public class Saab95 extends Car {
         color = Color.red;
         enginePower = 125;
 	    turboOn = false;
-        modelName = "car.Saab95";
+        modelName = "paket.car.Saab95";
         this.plate = plate;
         stopEngine();
     }

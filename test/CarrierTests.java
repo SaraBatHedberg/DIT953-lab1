@@ -1,6 +1,5 @@
-import car.Car;
-import car.Carrier;
-import car.Volvo240;
+import paket.car.Carrier;
+import paket.car.Volvo240;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -47,10 +46,10 @@ public class CarrierTests {
         carrier.startEngine();
         carrier.gas(0.5);
         carrier.move();
-        assertEquals(0.4, carrier.getY());
-        assertEquals(0.0, carrier.getX());
-        assertEquals(0.4, testcar.getY());
-        assertEquals(0.0, testcar.getX());
+        assertEquals(0.4, carrier.getLocation()[1]);
+        assertEquals(0.0, carrier.getLocation()[0]);
+        assertEquals(0.4, testcar.getLocation()[1]);
+        assertEquals(0.0, testcar.getLocation()[0]);
     }
 
     @Test
@@ -69,14 +68,14 @@ public class CarrierTests {
         carrier.lowerRamp();
         carrier.loadCar(testcar);
         carrier.unloadCar();
-        assertEquals("Successfully loaded car\n" + "Successfully unloaded car", PrintedMessageCaptor.toString().trim());
+        assertEquals("Successfully loaded paket.car\n" + "Successfully unloaded paket.car", PrintedMessageCaptor.toString().trim());
     }
 
     @Test
     public void TestUnloadCarInvalid() {
         System.setOut(new PrintStream(PrintedMessageCaptor));
         carrier.unloadCar();
-        assertEquals("Cannot unload a car when the carrier is empty", PrintedMessageCaptor.toString().trim());
+        assertEquals("Cannot unload a paket.car when the carrier is empty", PrintedMessageCaptor.toString().trim());
     }
 
     @Test
@@ -86,7 +85,7 @@ public class CarrierTests {
         carrier.loadCar(testcar);
         carrier.raiseRamp();
         carrier.unloadCar();
-        assertEquals("Successfully loaded car\n" + "Please lower the ramp before attempting to unload a car", PrintedMessageCaptor.toString().trim());
+        assertEquals("Successfully loaded paket.car\n" + "Please lower the ramp before attempting to unload a paket.car", PrintedMessageCaptor.toString().trim());
     }
 
     @Test
@@ -96,7 +95,7 @@ public class CarrierTests {
         carrier.loadCar(testcar);
         carrier.raiseRamp();
         carrier.unloadCar();
-        assertEquals("Successfully loaded car\n" + "Please lower the ramp before attempting to unload a car", PrintedMessageCaptor.toString().trim());
+        assertEquals("Successfully loaded paket.car\n" + "Please lower the ramp before attempting to unload a paket.car", PrintedMessageCaptor.toString().trim());
     }
 
     @Test
@@ -146,7 +145,7 @@ public class CarrierTests {
         testcar.move();}
         carrier.lowerRamp();
         carrier.loadCar(testcar);
-        assertEquals("Please drive closer before loading a car onto the carrier", PrintedMessageCaptor.toString().trim());
+        assertEquals("Please drive closer before loading a paket.car onto the carrier", PrintedMessageCaptor.toString().trim());
     }
 
 
@@ -174,7 +173,7 @@ public class CarrierTests {
     public void TestLoadCarWithRaisedRamp(){
         System.setOut(new PrintStream(PrintedMessageCaptor));
         carrier.loadCar(testcar);
-        assertEquals("Please lower the ramp before attempting to load a car", PrintedMessageCaptor.toString().trim());
+        assertEquals("Please lower the ramp before attempting to load a paket.car", PrintedMessageCaptor.toString().trim());
     }
 
 
@@ -184,8 +183,8 @@ public class CarrierTests {
  speedfactor ------
  decrement speed - done
  raiseramp och lower ramp else - done
- car proximity de med -3 - done
- load car  1st elif och else
+ paket.car proximity de med -3 - done
+ load paket.car  1st elif och else
 
 
     */

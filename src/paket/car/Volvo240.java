@@ -1,17 +1,15 @@
-package car;
-
-import car.Car;
+package paket.car;
 
 import java.awt.*;
 
 
 /**
- * Creates a class for a car of the type Volvo240, that extends Car.
+ * Creates a class for a paket.car of the type Volvo240, that extends Car.
  */
 public class Volvo240 extends Car {
 
     /**
-     * A final double that represents how trimmed the car is.
+     * A final double that represents how trimmed the paket.car is.
      */
     public final static double trimFactor = 1.25;
 
@@ -22,7 +20,7 @@ public class Volvo240 extends Car {
         nrDoors = 4;
         color = Color.black;
         enginePower = 100;
-        modelName = "car.Volvo240";
+        modelName = "paket.car.Volvo240";
         this.plate = plate;
         stopEngine();
     }

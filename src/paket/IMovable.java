@@ -1,9 +1,9 @@
-package car;
+package paket;
 
 /**
  * This is an interface that is implemented to allow an object to move and turn.
  */
-public interface Movable {
+public interface IMovable {
     /**
      * Allows an object to move.
      */

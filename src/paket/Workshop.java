@@ -1,13 +1,14 @@
-package car;
+package paket;
 
-import java.awt.*;
+import paket.car.Car;
+
 import java.util.ArrayList;
 
 /**
- * A class for workshops, that currently can only recieve cars or have cars retrieved from it.
- * @param <T> A parameter for which types of cars can be retrieved in the shop, which has to be car or a subtype to car.
+ * A class for workshops, that currently can only receive cars or have cars retrieved from it.
+ * @param <T> A parameter for which types of cars can be retrieved in the shop, which has to be paket. Car or a subtype to paket.car.
  */
-public class Workshop <T extends Car> implements ICoordinates{
+public class Workshop <T extends Car> extends WorldObjects{
 
     /**
      * a variable for the workshop's x-coordinate.
@@ -47,6 +48,7 @@ public class Workshop <T extends Car> implements ICoordinates{
     public void retrieveCar(String plate){
         if (listOfCars.contains(plate)){
             listOfCars.remove(plate);
+            System.out.println("Car (" + plate + ") retrieved");
         } else {
             System.out.println(plate + " is not in this workshop");
         }

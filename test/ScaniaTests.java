@@ -1,5 +1,4 @@
-import car.Car;
-import car.Scania;
+import paket.car.Scania;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -119,7 +118,7 @@ public class ScaniaTests {
         Truck.startEngine();
         Truck.gas(0.5);
         Truck.move();
-        assertEquals(0.4, Truck.getY());
+        assertEquals(0.4, Truck.getLocation()[1]);
     }
 
     /**
