@@ -6,12 +6,20 @@ import java.awt.*;
 import java.util.Stack;
 
 /**
- * Class Carrier is a Type of paket.car that can load other cars onto it.
+ * Class Carrier is a Type of car that can load other cars onto it.
  */
 public class Carrier extends Truck {
-
+    /**
+     * Helper instance to measure distance
+     */
     private final ProximityChecker proxCheck = new ProximityChecker();
+    /**
+     * Ramp status
+     */
     private boolean rampUp;
+    /**
+     * Maximum number of cars
+     */
     private final int capacity;
 
     private Stack<Car> loadedCars = new Stack<Car>();
@@ -27,10 +35,19 @@ public class Carrier extends Truck {
         stopEngine();
 
     }
+
+    /**
+     * Getter for loaded cars
+     * @return Stack
+     */
     public Stack<Car> getLoadedCars() {
             return loadedCars;
         }
 
+    /**
+     * Getter for ramp's current status
+     * @return String
+     */
     public String getRampStatus() {
         if (rampUp) {
             return ("Ramp is currently up");
@@ -64,7 +81,7 @@ public class Carrier extends Truck {
     }
 
     /**
-     * Method to check if paket.car is close enough to be loaded onto carrier
+     * Method to check if car is close enough to be loaded onto carrier
      * @param carToCheck Car (which distance to the carrier will be calculated)
      * @return boolean (false if not close enough)
      */
@@ -73,7 +90,7 @@ public class Carrier extends Truck {
     }
 
     /**
-     * Method loads a paket.car to the carrier if carProximity is true and the loaded vehicle has the type Car.
+     * Method loads a car to the carrier if carProximity is true and the loaded vehicle has the type Car.
      * @param carToLoad The parameter has the type Car.
      */
     public void loadCar(Car carToLoad) {
@@ -100,25 +117,24 @@ public class Carrier extends Truck {
     }
 
     /**
-     * Method which unloads the most recent loaded paket.car from the carrier. (last in first out)
+     * Method which unloads the most recent loaded car from the carrier. (last in first out)
      */
     public void unloadCar() {
         if (loadedCars.size() == 0) {
-            System.out.println("Cannot unload a paket.car when the carrier is empty");
+            System.out.println("Cannot unload a car when the carrier is empty");
         } else if (rampUp){
-            System.out.println("Please lower the ramp before attempting to unload a paket.car");
+            System.out.println("Please lower the ramp before attempting to unload a car");
         } else {
             Car unloadedCar = loadedCars.pop();
             setUnloadedCarNewLocation(unloadedCar);
             unloadedCar.setLoaded(false);
-            System.out.println("Successfully unloaded paket.car");        }
+            System.out.println("Successfully unloaded car");        
+        }
     }
 
-    ////////////////////////// SETTERS ////////////////////
-
     /**
-     * Method sets a new location to the newly unloaded paket.car, based on the carrier's direction when unloading.
-     * @param unloadedCar The parameter is a reference to the object of the unloaded paket.car.
+     * Method sets a new location to the newly unloaded car, based on the carrier's direction when unloading.
+     * @param unloadedCar The parameter is a reference to the object of the unloaded car.
      */
     private void setUnloadedCarNewLocation(Car unloadedCar) {
         switch(getDirection()) {

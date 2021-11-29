@@ -46,7 +46,6 @@ public class Volvo240 extends Car {
         currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, enginePower);
     }
 
-
     /**
      * Used by the method brake to calculate the new currentSpeed of a saab95.
      * Cannot return a value that is lower than 0.

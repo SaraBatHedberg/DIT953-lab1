@@ -30,14 +30,7 @@ public abstract class Car extends WorldObjects implements IMovable {
      * The paket.car model name.
      */
     protected String modelName; // The paket.car model name
-    /**
-     * X-coordinate of the moving paket.car.
-     */
-    private double x = 0; // x-coordinate of the moving paket.car
-    /**
-     * Y-coordinate of the moving paket.car.
-     */
-    private double y = 0; // y-coordinate of the moving paket.car
+
     /**
      * A default start value for the direction of all the created cars.
      */
@@ -135,11 +128,15 @@ public abstract class Car extends WorldObjects implements IMovable {
      * Makes a cars loaded attribute true
      * @param loaded boolean
      */
-    protected void setLoaded(boolean loaded) {
+    public void setLoaded(boolean loaded) {
         this.loaded = loaded;
     }
 
-
+    /**
+     * Sets new location for the car
+     * @param x int
+     * @param y int
+     */
     protected void setLocation(double x, double y) {
         this.x = x;
         this.y = y;

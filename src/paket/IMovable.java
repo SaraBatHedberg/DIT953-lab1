@@ -12,7 +12,6 @@ public interface IMovable {
      * Allows an object to turn to the left.
      */
     void turnLeft();
-
     /**
      * Allows an object to turn to the right.
      */

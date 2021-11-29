@@ -46,7 +46,6 @@ public class Scania extends Truck {
         }
     }
 
-
     /**
      * Method lowers the platform with a certain amount of degrees.
      * Method prints an error message if the truck isn't stationary when calling.

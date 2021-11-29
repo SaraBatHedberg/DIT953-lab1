@@ -1,5 +1,8 @@
 package paket;
 
+/**
+ * Helper class for objects that need to measure a distance between itself and another object
+ */
 public class ProximityChecker {
     public boolean CheckProximity (WorldObjects one, WorldObjects two){
         double xFirst = one.getLocation()[0];

@@ -14,12 +14,6 @@ public class Main {
      * @param args necessary to run the code
      */
     public static void main(String [] args) {
-
-        Workshop<Volvo240> volvorepair = new Workshop<>(0, 0, 1, "Volvo");
-        Volvo240 newvolvo = new Volvo240("ABC501");
-        volvorepair.receiveCar(newvolvo);
-        volvorepair.repair();
-        volvorepair.retrieveCar("ABC501");
-
+        
     }
 }
