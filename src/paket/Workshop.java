@@ -39,7 +39,9 @@ public class Workshop <T extends Car> extends WorldObjects{
         } else if (!proxCheck.CheckProximity(this, carToLoad)){
             System.out.println("Please drive closer before attempting to enter the workshop");
         } else {
-            System.out.println("Please drive closer before attempting to enter the workshop");
+            listOfCars.add(carToLoad);
+            carToLoad.setLoaded(true);
+            System.out.println("Car received");
         }
     }
 

@@ -109,7 +109,10 @@ public class Carrier extends Truck {
      */
     @Override
     public void move(){
-        super.move();
+        if (!rampUp){
+            System.out.println("Please lower the ramp before moving");
+        } else {super.move();}
+
         if (loadedCars.size() > 0)
             for (Car car: loadedCars){
                 car.setLocation(getLocation()[0], getLocation()[1]);
