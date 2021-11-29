@@ -16,35 +16,50 @@ public class CarrierTests {
     Volvo240 testcar;
     private final ByteArrayOutputStream PrintedMessageCaptor = new ByteArrayOutputStream();
 
+    /**
+     * creates a new Carrier and a new testcar of type Volvo240 for each test.
+     */
     @BeforeEach
     public void init() {
         carrier = new Carrier("ABC001");
         testcar = new Volvo240("ABC002");
     }
 
+    /**
+     * Testing methods to raise the ramp.
+     */
     @Test
     public void TestRaiseRamp() {
         carrier.raiseRamp();
         assertEquals("Ramp is currently up", carrier.getRampStatus());
     }
 
+    /**
+     * Testing methods to lower the ramp.
+     */
     @Test
     public void TestLowerRamp() {
         carrier.lowerRamp();
         assertEquals("Ramp is currently down", carrier.getRampStatus());
     }
 
+    /**
+     *Testing method for loading cars onto the carrier.
+     */
     @Test
     public void TestLoadCar() {
         carrier.lowerRamp();
         carrier.loadCar(testcar);
         assertTrue(testcar.isLoaded());
     }
-
+    /**
+     * Testing move for the carrier.
+     */
     @Test
     public void TestMove() {
         carrier.lowerRamp();
         carrier.loadCar(testcar);
+        carrier.raiseRamp();
         carrier.startEngine();
         carrier.gas(0.5);
         carrier.move();
@@ -70,7 +85,7 @@ public class CarrierTests {
         carrier.lowerRamp();
         carrier.loadCar(testcar);
         carrier.unloadCar();
-        assertEquals("Successfully loaded paket.car\n" + "Successfully unloaded paket.car", PrintedMessageCaptor.toString().trim());
+        assertEquals("Successfully loaded car\n" + "Successfully unloaded car", PrintedMessageCaptor.toString().trim());
     }
 
     @Test
@@ -147,7 +162,7 @@ public class CarrierTests {
         testcar.move();}
         carrier.lowerRamp();
         carrier.loadCar(testcar);
-        assertEquals("Please drive closer before loading a paket.car onto the carrier", PrintedMessageCaptor.toString().trim());
+        assertEquals("Please drive closer before loading a car onto the carrier", PrintedMessageCaptor.toString().trim());
     }
 
 
@@ -159,7 +174,7 @@ public class CarrierTests {
         carrier.gas(1);
         carrier.move();
         carrier.raiseRamp();
-        assertEquals("*pip sound* Please ensure carrier is stationary before raising the ramp", PrintedMessageCaptor.toString().trim());
+        assertEquals("Please lower the ramp before moving\n" + "*pip sound* Please ensure carrier is stationary before raising the ramp", PrintedMessageCaptor.toString().trim());
     }
     @Test
     public void TestLowerRampWhileMoving(){
@@ -175,7 +190,7 @@ public class CarrierTests {
     public void TestLoadCarWithRaisedRamp(){
         System.setOut(new PrintStream(PrintedMessageCaptor));
         carrier.loadCar(testcar);
-        assertEquals("Please lower the ramp before attempting to load a paket.car", PrintedMessageCaptor.toString().trim());
+        assertEquals("Please lower the ramp before attempting to load a car", PrintedMessageCaptor.toString().trim());
     }
 
     @Test

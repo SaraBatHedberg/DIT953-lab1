@@ -94,14 +94,14 @@ public class Carrier extends Truck {
      * @param carToLoad The parameter has the type Car.
      */
     public void loadCar(Car carToLoad) {
-        if (rampUp) {System.out.println("Please lower the ramp before attempting to load a paket.car");}
+        if (rampUp) {System.out.println("Please lower the ramp before attempting to load a car");}
         else if (carToLoad.getClass() == Carrier.class){System.out.println("Cannot load a carrier onto a carrier");}
-        else if (!carProximity(carToLoad)) {System.out.println("Please drive closer before loading a paket.car onto the carrier");}
+        else if (!carProximity(carToLoad)) {System.out.println("Please drive closer before loading a car onto the carrier");}
         else if (loadedCars.size() == capacity) {System.out.println("The carrier is currently full and cannot load another car");}
         else {
             loadedCars.push(carToLoad);
             carToLoad.setLoaded(true);
-            System.out.println("Successfully loaded paket.car");}
+            System.out.println("Successfully loaded car");}
     }
 
     /**

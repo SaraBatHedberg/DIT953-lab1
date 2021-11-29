@@ -18,7 +18,13 @@ public class Workshop <T extends Car> extends WorldObjects{
      * Name of the workshop
      */
     private final String name;
-    private ArrayList <String> listOfCars;
+    /**
+     * List of currently stored cars
+     */
+    private ArrayList <T> listOfCars;
+    /**
+     * Helper instance to measure distance
+     */
     private final ProximityChecker proxCheck = new ProximityChecker();
 
     public Workshop(int x, int y, int capacity, String name){
@@ -65,9 +71,4 @@ public class Workshop <T extends Car> extends WorldObjects{
             System.out.println(carToReceive.getLicensePlate() + " is not in this workshop");
         }
     }
-
-
-
-    ////////////////////// GETTERS ///////////////////////
-
 }
