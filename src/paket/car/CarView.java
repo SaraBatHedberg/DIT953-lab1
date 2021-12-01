@@ -18,7 +18,7 @@ import java.awt.event.ActionListener;
 public class CarView extends JFrame{
     private static final int X = 800;
     private static final int Y = 800;
-
+    
     // The controller member
     CarController carC;
 
@@ -116,6 +116,11 @@ public class CarView extends JFrame{
                 carC.startEngine();
             }
         });
+        /*
+        location.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) { carC.invertDirection(); }
+        });*/
 
         // Make the frame pack all it's components by respecting the sizes if possible.
         this.pack();

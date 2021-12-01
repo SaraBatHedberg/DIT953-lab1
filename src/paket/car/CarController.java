@@ -1,5 +1,7 @@
 package paket.car;
 
+import paket.Directions;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -49,7 +51,29 @@ public class CarController {
                 car.move();
                 int x = (int) Math.round(car.getLocation()[0]);
                 int y = (int) Math.round(car.getLocation()[1]);
-                frame.drawPanel.moveit(x, y);
+                switch (car.getDirection()) {
+                    case UP -> {
+                        if (y >= 800-240) {
+                            invertDirection(car);
+                        }
+                    }
+                    case DOWN -> {
+                        if (y <= 0) {
+                            invertDirection(car);
+                        }
+                    }
+                    case LEFT -> {
+                        if (x <= 0) {
+                            invertDirection(car);
+                        }
+                    }
+                    case RIGHT -> {
+                        if (x >= 400) {
+                            invertDirection(car);
+                        }
+                    }
+                }
+                frame.drawPanel.moveit(x, y, car);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
             }
