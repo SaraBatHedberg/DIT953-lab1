@@ -3,21 +3,33 @@ package paket.car;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import javax.imageio.ImageIO;
+import javax.imageio.*;
 import javax.swing.*;
-
-// This panel represent the animated part of the view with the car images.
+// This panel represents the animated part of the view with the car images.
 
 public class DrawPanel extends JPanel{
     // Just a single image, TODO: Generalize
     BufferedImage volvoImage;
-    // To keep track of a singel cars position
+    BufferedImage scaniaImage;
+    BufferedImage saabImage;
+    // To keep track of a single cars position
     Point volvoPoint = new Point();
 
     // TODO: Make this genereal for all cars
     void moveit(int x, int y){
         volvoPoint.x = x;
         volvoPoint.y = y;
+    }
+    void moveit (int x, int y, Saab95 saab){
+        saabPoint.y = y;
+        saabPoint.x = x + 150;
+    }
+    void moveit (int x, int y, Scania scania){
+        scaniaPoint.y = y;
+        scaniaPoint.x = x + 300;
+    }
+    void moveit (int x, int y, Car car){
+        
     }
 
     // Initializes the panel and reads the images
@@ -34,6 +46,9 @@ public class DrawPanel extends JPanel{
             // Rememember to rightclick src New -> Package -> name: paket.car.pics -> MOVE *.jpg to paket.car.pics.
             // if you are starting in IntelliJ.
             volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
+            saabImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
+            scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
+
         } catch (IOException ex)
         {
             ex.printStackTrace();
