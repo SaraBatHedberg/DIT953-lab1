@@ -56,7 +56,7 @@ public class CarController {
                 int y = (int) Math.round(car.getLocation()[1]);
                 switch (car.getDirection()) {
                     case UP -> {
-                        if (y >= 800-240) {
+                        if (y >= 800-240-60) {
                             invertDirection(car);
                         }
                     }
@@ -118,6 +118,24 @@ public class CarController {
             if (car.getClass() == Saab95.class){
                 ((Saab95) car).setTurboOff();
                 System.out.println("Turbo Off");
+            }
+        }
+    }
+
+    void liftBed(int amount) {
+        for (Car car : cars) {
+            if (car.getClass() == Scania.class) {
+                ((Scania) car).raisePlatform(amount);
+                System.out.println("Lifted bed " + amount + " degrees");
+            }
+        }
+    }
+
+    void lowerBed (int amount) {
+        for (Car car : cars) {
+            if (car.getClass() == Scania.class) {
+                ((Scania) car).lowerPlatform(amount);
+                System.out.println("Lowered bed " + amount + " degrees");
             }
         }
     }

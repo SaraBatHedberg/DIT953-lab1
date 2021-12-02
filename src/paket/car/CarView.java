@@ -18,6 +18,7 @@ import java.awt.event.ActionListener;
 public class CarView extends JFrame{
     private static final int X = 800;
     private static final int Y = 800;
+    private final Color background = Color.RED;
     
     // The controller member
     CarController carC;
