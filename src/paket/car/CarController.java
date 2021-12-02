@@ -38,8 +38,6 @@ public class CarController {
         cc.cars.add(new Scania("XXX999"));
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
-        cc.frame = new CarView("CarSim 2.0", cc);
-        cc.frame = new CarView("CarSim 3.0", cc);
 
         // Start the timer
         cc.timer.start();
