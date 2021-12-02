@@ -137,6 +137,27 @@ public class CarView extends JFrame{
                 carC.startEngine();
             }
         });
+
+        stopButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.stopEngine();
+            }
+        });
+
+        liftBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.liftBed(gasAmount);
+            }
+        });
+
+        lowerBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.lowerBed(gasAmount);
+            }
+        });
         /*
         location.addActionListener(new ActionListener() {
             @Override

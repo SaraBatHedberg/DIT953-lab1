@@ -132,4 +132,10 @@ public class CarController {
             car.startEngine();
         }
     }
+
+    void stopEngine() {
+        for (Car car : cars) {
+            car.stopEngine();
+        }
+    }
 }

@@ -83,8 +83,8 @@ public class Scania extends Truck {
     public void move() {
         if (angle == 0 && engineOn) {
             super.move();
-        } else {
-            System.out.println("Please ensure the platform is lowered and the engine turned on, then gas to gain speed");
+//        } else {
+//            System.out.println("Please ensure the platform is lowered and the engine turned on, then gas to gain speed");
         }
     }
 }

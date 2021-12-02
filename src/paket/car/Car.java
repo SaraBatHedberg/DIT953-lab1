@@ -149,8 +149,10 @@ public abstract class Car extends WorldObjects implements IMovable {
      * Sets the current speed of the vehicle to 0.1 (can the vehicle "gas" without starting the engine?).
      */
     public void startEngine(){
-        if (!loaded)
-            {engineOn = true;}
+        if (!loaded) {
+            engineOn = true;
+            System.out.println("Engine started");
+        }
     }
 
     /**
@@ -159,9 +161,11 @@ public abstract class Car extends WorldObjects implements IMovable {
     public void stopEngine(){
         if (currentSpeed == 0) {
             engineOn = false;
+            System.out.println("Engine stopped");
         } else {
             System.out.println("Brake before stopping the engine");
         }
+
     }
 
     /**
@@ -223,8 +227,8 @@ public abstract class Car extends WorldObjects implements IMovable {
                 case RIGHT -> x = (x + currentSpeed);
                 case DOWN -> y = (y - currentSpeed);
             }
-        } else {
-            System.out.println("Cannot move with engine turned off");
+//        } else {
+//            System.out.println("Cannot move with engine turned off");
         }
     }
 

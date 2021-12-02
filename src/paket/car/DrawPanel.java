@@ -31,7 +31,16 @@ public class DrawPanel extends JPanel{
         scaniaPoint.x = x + 300;
     }
     void moveit (int x, int y, Car car){
-        
+        if (car instanceof Volvo240) {
+            volvoPoint.y = y;
+            volvoPoint.x = x;
+        } else if (car instanceof Saab95) {
+            saabPoint.y = y;
+            saabPoint.x = x + 150;
+        } else if (car instanceof Scania) {
+            scaniaPoint.y = y;
+            scaniaPoint.x = x + 300;
+        }
     }
 
     // Initializes the panel and reads the images
