@@ -1,7 +1,5 @@
 package paket.car;
 
-import paket.Directions;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,8 +18,7 @@ public class CarController {
     private final int delay = 50;
     // The timer is started with an listener (see below) that executes the statements
     // each step between delays.
-    private Timer timer = new Timer(delay, new TimerListener());
-
+    protected Timer timer = new Timer(delay, new CarController.TimerListener());
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
     // A list of cars, modify if needed
