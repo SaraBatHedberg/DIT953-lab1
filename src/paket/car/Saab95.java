@@ -5,7 +5,7 @@ import java.awt.*;
 /**
  * Creates a class for a paket.car of the type Saab95, that extends Car.
  */
-public class Saab95 extends Car {
+public class Saab95 extends Car{
 
     /**
      * A boolean that can be turned on or off for wether the Saab95s engine is on.
@@ -72,4 +72,5 @@ public class Saab95 extends Car {
     void decrementSpeed(double amount) {
         currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
     }
+
 }

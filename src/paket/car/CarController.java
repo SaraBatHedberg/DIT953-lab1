@@ -21,24 +21,14 @@ public class CarController {
     protected Timer timer = new Timer(delay, new CarController.TimerListener());
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
+
     // A list of cars, modify if needed
-    ArrayList<Car> cars = new ArrayList<>();
+    protected ArrayList<Car> cars = new ArrayList<>();
 
-    //methods:
-
-    public static void main(String[] args) {
-        // Instance of this class
-        CarController cc = new CarController();
-
-        cc.cars.add(new Volvo240("ABC123"));
-        cc.cars.add(new Saab95("SAAAAAB"));
-        cc.cars.add(new Scania("XXX999"));
-        // Start a new view and send a reference of self
-        cc.frame = new CarView("CarSim 1.0", cc);
-
-        // Start the timer
-        cc.timer.start();
+    public ArrayList<Car> getCars(){
+        return cars;
     }
+
 
     /* Each step the TimerListener moves all the cars in the list and tells the
      * view to update its images. Change this method to your needs.
@@ -71,15 +61,10 @@ public class CarController {
                         }
                     }
                 }
-                frame.drawPanel.moveit(x, y, car);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
             }
         }
-    }
-
-    protected ArrayList<Car> getCars() {
-        return cars;
     }
 
     // Calls the gas method for each car once
@@ -101,7 +86,7 @@ public class CarController {
 
     void turboOn (){
         for (Car car : cars){
-            if (car.getClass() == Saab95.class){
+            if (checkIfCarSaab(car)){
                 ((Saab95) car).setTurboOn();
                 System.out.println("Turbo on");
             }
@@ -110,7 +95,7 @@ public class CarController {
 
     void turboOff (){
         for (Car car : cars){
-            if (car.getClass() == Saab95.class){
+            if (checkIfCarSaab(car)){
                 ((Saab95) car).setTurboOff();
                 System.out.println("Turbo Off");
             }
@@ -119,7 +104,7 @@ public class CarController {
 
     void liftBed(int amount) {
         for (Car car : cars) {
-            if (car.getClass() == Scania.class) {
+            if (checkIfCarScania(car)) {
                 ((Scania) car).raisePlatform(amount);
                 System.out.println("Lifted bed " + amount + " degrees");
             }
@@ -128,7 +113,7 @@ public class CarController {
 
     void lowerBed (int amount) {
         for (Car car : cars) {
-            if (car.getClass() == Scania.class) {
+            if (checkIfCarScania(car)) {
                 ((Scania) car).lowerPlatform(amount);
                 System.out.println("Lowered bed " + amount + " degrees");
             }
@@ -150,5 +135,13 @@ public class CarController {
         for (Car car : cars) {
             car.stopEngine();
         }
+    }
+
+    private boolean checkIfCarSaab(Car car){
+        return car.getClass() == Saab95.class;
+    }
+
+    private boolean checkIfCarScania(Car car){
+        return car.getClass() == Scania.class;
     }
 }

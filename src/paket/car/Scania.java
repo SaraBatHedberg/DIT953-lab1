@@ -8,7 +8,7 @@ import java.awt.*;
  * Objects created in this class will have the type Scania.
  */
 public class Scania extends Truck {
-    int angle;
+    private int angle;
 
     /**
      * A constructor that contains the instance variables starting values for every Scania.
@@ -87,4 +87,5 @@ public class Scania extends Truck {
 //            System.out.println("Please ensure the platform is lowered and the engine turned on, then gas to gain speed");
         }
     }
+
 }

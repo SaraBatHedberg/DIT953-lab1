@@ -10,31 +10,13 @@ import javax.swing.*;
 // This panel represents the animated part of the view with the car images.
 
 public class DrawPanel extends JPanel{
-    // Just a single image, TODO: Generalize
-    BufferedImage volvoImage;
-    BufferedImage scaniaImage;
-    BufferedImage saabImage;
-    // To keep track of a single cars position
-    private final Point volvoPoint = new Point();
-    private final Point saabPoint = new Point();
-    private final Point scaniaPoint = new Point();
-
-    // TODO: Make this general for all cars
-    void moveit (int x, int y, Car car){
-        if (car instanceof Volvo240) {
-            volvoPoint.y = y;
-            volvoPoint.x = x;
-        } else if (car instanceof Saab95) {
-            saabPoint.y = y;
-            saabPoint.x = x + 150;
-        } else if (car instanceof Scania) {
-            scaniaPoint.y = y;
-            scaniaPoint.x = x + 300;
-        }
-    }
+    CarController cc;
+    private final Color lightGreen = new Color(80, 115, 70);
+    ArrayList<BufferedImage> listan = new ArrayList<>();
+    private final int distanceCars = 150;
 
     // Initializes the panel and reads the images
-    public DrawPanel(int x, int y) {
+    public DrawPanel(int x, int y, CarController cc) {
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(lightGreen);
@@ -56,8 +38,11 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
-        g.drawImage(saabImage, saabPoint.x, saabPoint.y, null);
-        g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null);
+            for (int i = 0; i < listan.size(); i++){
+                BufferedImage currentImage = listan.get(i);
+                Car currentCar = cc.getCars().get(i);
+                g.drawImage(currentImage, (int)Math.round(currentCar.getLocation()[0]) + i*distanceCars, (int)Math.round(currentCar.getLocation()[1]), null);
+            }
+
     }
 }

@@ -18,8 +18,9 @@ import java.awt.event.ActionListener;
 public class CarView extends JFrame{
     private static final int X = 800;
     private static final int Y = 800;
-    private final Color background = Color.RED;
-    
+    private final Color background = new Color(80, 115, 70);
+    private final Color myRed = new Color(130, 51, 51);
+
     // The controller member
     CarController carC;
 
@@ -45,6 +46,7 @@ public class CarView extends JFrame{
     // Constructor
     public CarView(String framename, CarController cc){
         this.carC = cc;
+        this.drawPanel = new DrawPanel (X, Y-240, cc);
         initComponents(framename);
     }
 
@@ -158,11 +160,7 @@ public class CarView extends JFrame{
                 carC.lowerBed(gasAmount);
             }
         });
-        /*
-        location.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) { carC.invertDirection(); }
-        });*/
+
 
         // Make the frame pack all it's components by respecting the sizes if possible.
         this.pack();

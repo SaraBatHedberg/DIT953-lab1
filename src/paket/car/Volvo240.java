@@ -6,12 +6,13 @@ import java.awt.*;
 /**
  * Creates a class for a paket.car of the type Volvo240, that extends Car.
  */
-public class Volvo240 extends Car {
+public class Volvo240 extends Car{
 
     /**
      * A final double that represents how trimmed the paket.car is.
      */
     public final static double trimFactor = 1.25;
+
 
     /**
      * A constructor that contains the instance variables starting values for every Saab95.
@@ -55,4 +56,5 @@ public class Volvo240 extends Car {
     void decrementSpeed(double amount) {
         currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
     }
+
 }
