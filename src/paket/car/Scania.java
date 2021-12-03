@@ -17,7 +17,7 @@ public class Scania extends Truck {
         nrDoors = 2;
         color = Color.green;
         enginePower = 200;
-        modelName = "truck.Scania";
+        modelName = "Scania";
         angle = 0;
         this.plate = plate;
         stopEngine();

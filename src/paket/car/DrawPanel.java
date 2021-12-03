@@ -3,6 +3,8 @@ package paket.car;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Objects;
 import javax.imageio.*;
 import javax.swing.*;
 // This panel represents the animated part of the view with the car images.
@@ -39,21 +41,14 @@ public class DrawPanel extends JPanel{
         this.cc = cc;
         // Print an error message in case file is not found with a try/catch block
         try {
-            // You can remove the "paket.car.pics" part if running outside of IntelliJ and
-            // everything is in the same main folder.
-            // volvoImage = ImageIO.read(new File("Volvo240.jpg"));
-
-            // Remember to rightclick src New -> Package -> name: paket.car.pics -> MOVE *.jpg to paket.car.pics.
-            // if you are starting in IntelliJ.
-            volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
-            saabImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
-            scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
-
+            for (Car car: cc.getCars()) {
+                BufferedImage image = ImageIO.read(Objects.requireNonNull(DrawPanel.class.getResourceAsStream("pics/" + car.modelName + ".jpg")));
+                listan.add(image);
+            }
         } catch (IOException ex)
         {
             ex.printStackTrace();
         }
-
     }
 
     // This method is called each time the panel updates/refreshes/repaints itself

@@ -20,7 +20,7 @@ public class Saab95 extends Car {
         color = Color.red;
         enginePower = 125;
 	    turboOn = false;
-        modelName = "paket.car.Saab95";
+        modelName = "Saab95";
         this.plate = plate;
         stopEngine();
     }
