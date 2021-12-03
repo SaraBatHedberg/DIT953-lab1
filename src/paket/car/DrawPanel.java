@@ -35,7 +35,8 @@ public class DrawPanel extends JPanel{
     public DrawPanel(int x, int y) {
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
-        this.setBackground(Color.green);
+        this.setBackground(lightGreen);
+        this.cc = cc;
         // Print an error message in case file is not found with a try/catch block
         try {
             // You can remove the "paket.car.pics" part if running outside of IntelliJ and

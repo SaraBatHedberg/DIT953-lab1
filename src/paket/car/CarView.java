@@ -89,16 +89,16 @@ public class CarView extends JFrame{
         controlPanel.add(lowerBedButton, 5);
         controlPanel.setPreferredSize(new Dimension((X/2)+4, 200));
         this.add(controlPanel);
-        controlPanel.setBackground(Color.CYAN);
+        controlPanel.setBackground(background);
 
 
         startButton.setBackground(Color.lightGray);
-        startButton.setForeground(Color.green);
+        startButton.setForeground(background);
         startButton.setPreferredSize(new Dimension(X/5-15,200));
         this.add(startButton);
 
 
-        stopButton.setBackground(Color.red);
+        stopButton.setBackground(myRed);
         stopButton.setForeground(Color.black);
         stopButton.setPreferredSize(new Dimension(X/5-15,200));
         this.add(stopButton);
