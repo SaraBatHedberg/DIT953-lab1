@@ -5,7 +5,7 @@ import java.awt.*;
 /**
  * Creates a class for a paket.car of the type Saab95, that extends Car.
  */
-public class Saab95 extends Car{
+public class Saab95 extends Car {
 
     /**
      * A boolean that can be turned on or off for wether the Saab95s engine is on.
@@ -15,11 +15,11 @@ public class Saab95 extends Car{
     /**
      * A constructor that contains the instance variables starting values for every Saab95.
      */
-    public Saab95(String plate){
+    public Saab95(String plate) {
         nrDoors = 2;
         color = Color.red;
         enginePower = 125;
-	    turboOn = false;
+        turboOn = false;
         modelName = "Saab95";
         this.plate = plate;
         stopEngine();
@@ -29,8 +29,8 @@ public class Saab95 extends Car{
     /**
      * Turns on the Boolean turboOn ( Sets it to true).
      */
-    public void setTurboOn(){
-	    turboOn = true;
+    public void setTurboOn() {
+        turboOn = true;
     }
 
     /**
@@ -44,33 +44,15 @@ public class Saab95 extends Car{
      * A method used to calculate the speedFactor of a Saab95,
      * Used by incrementSpeed and decrementSpeed.
      * Calculations vary depending on the boolean turboOn.
+     *
      * @return double SpeedFactor.
      */
     @Override
-    public double speedFactor(){
+    public double speedFactor() {
         double turbo = 1;
-        if(turboOn) turbo = 1.3;
+        if (turboOn) turbo = 1.3;
         return enginePower * 0.01 * turbo;
     }
-
-    /**
-     * Used by the method gas to calculate the new currentSpeed of a saab95.
-     * Cannot return a value that is larger than enginePowers value.
-     * @param amount a double representing the gas amount, between 0 and 1.
-     */
-    @Override
-    void incrementSpeed(double amount) {
-        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, enginePower);
-    }
-
-    /**
-     * Used by the method brake to calculate the new currentSpeed of a saab95.
-     * Cannot return a value that is lower than 0.
-     * @param amount a double representing the brake amount, between 0 and 1.
-     */
-    @Override
-    void decrementSpeed(double amount) {
-        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
-    }
-
 }
+
+

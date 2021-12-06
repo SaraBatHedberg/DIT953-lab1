@@ -176,12 +176,16 @@ public abstract class Car extends WorldObjects implements IMovable {
     /**
      * Method should be implemented in subclasses.
      */
-    abstract void incrementSpeed(double amount);
+     protected void incrementSpeed(double amount){
+         currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, enginePower);
+     }
 
     /**
      * Method should be implemented in subclasses.
      */
-    abstract void decrementSpeed(double amount);
+     protected void decrementSpeed(double amount){
+         currentSpeed = Math.max(currentSpeed - speedFactor() * amount, 0);
+     }
 
     /**
      * Accelerates the speed of the vehicle.
