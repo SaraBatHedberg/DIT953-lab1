@@ -7,6 +7,8 @@ public class Main {
     public static void main(String[] args) {
         // Instance of this class
         CarController cc = new CarController();
+        CarModel model = new CarModel();
+        model.subscribe(cc.frame);
 
         cc.cars.add(new Volvo240("ABC123"));
         cc.cars.add(new Saab95("SAAAAAB"));
