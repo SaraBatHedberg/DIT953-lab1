@@ -1,5 +1,6 @@
 package paket;
 
+
 /**
  * Class that gives it's instances a location.
  */

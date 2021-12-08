@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
  * each of it's components.
  **/
 
-public class CarView extends JFrame{
+public class CarView extends JFrame implements Observer {
     private static final int X = 800;
     private static final int Y = 800;
     private final Color background = new Color(80, 115, 70);
@@ -43,7 +43,7 @@ public class CarView extends JFrame{
     JButton stopButton = new JButton("Stop all cars");
 
     // Constructor
-    public CarView(String framename, CarController cc){
+    public CarView(String framename, CarController cc, CarModel model){
         this.carC = cc;
         this.drawPanel = new DrawPanel (X, Y-240, cc);
         initComponents(framename);
@@ -171,5 +171,10 @@ public class CarView extends JFrame{
         this.setVisible(true);
         // Make sure the frame exits when "x" is pressed
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    @Override
+    public void update() {
+        drawPanel.repaint();
     }
 }

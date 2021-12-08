@@ -10,6 +10,7 @@ import java.awt.*;
  * this class creates a new object of the type Car.
  */
 public abstract class Car extends WorldObjects implements IMovable {
+
     /**
      * Number of doors for a specific paket.car.
      */
@@ -30,7 +31,6 @@ public abstract class Car extends WorldObjects implements IMovable {
      * The paket.car model name.
      */
     protected String modelName; // The paket.car model name
-
     /**
      * A default start value for the direction of all the created cars.
      */

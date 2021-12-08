@@ -21,6 +21,7 @@ public class CarController {
     protected Timer timer = new Timer(delay, new CarController.TimerListener());
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
+    //CarModel model = new CarModel();
 
     // A list of cars, modify if needed
     protected ArrayList<Car> cars = new ArrayList<>();
