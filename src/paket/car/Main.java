@@ -6,7 +6,6 @@ public class Main {
 
     public static void main(String[] args) {
         // Instance of this class
-
         CarController cc = new CarController();
 
         cc.cars.add(new Volvo240("ABC123"));

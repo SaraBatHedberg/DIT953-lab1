@@ -5,6 +5,8 @@ import paket.IMovable;
 import paket.WorldObjects;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * this class creates a new object of the type Car.
