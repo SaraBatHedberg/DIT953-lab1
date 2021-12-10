@@ -12,15 +12,14 @@ import javax.swing.*;
 public class DrawPanel extends JPanel{
     private final CarModel model;
     CarController cc;
-    private final Color lightGreen = new Color(80, 115, 70);
     ArrayList<BufferedImage> listan = new ArrayList<>();
-    private final int distanceCars = 150;
 
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y, CarController cc, CarModel model) {
         this.setDoubleBuffered(true);
         this.model = model;
         this.setPreferredSize(new Dimension(x, y));
+        Color lightGreen = new Color(80, 115, 70);
         this.setBackground(lightGreen);
         this.cc = cc;
         // Print an error message in case file is not found with a try/catch block
@@ -36,7 +35,6 @@ public class DrawPanel extends JPanel{
     }
 
     // This method is called each time the panel updates/refreshes/repaints itself
-    // TODO: Change to suit your needs.
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -47,6 +45,5 @@ public class DrawPanel extends JPanel{
                 g.drawImage(currentImage, (int)Math.round(currentCar.getLocation()[0]) + i* distanceCars, (int)Math.round(currentCar.getLocation()[1]), null);
                 model.updateObservers();
             }
-
     }
 }

@@ -1,6 +1,5 @@
 package paket.car;
 
-import javax.swing.*;
 
 public class Main {
 

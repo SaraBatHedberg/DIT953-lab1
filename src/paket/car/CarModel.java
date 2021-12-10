@@ -1,7 +1,5 @@
 package paket.car;
 
-import paket.WorldObjects;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +8,6 @@ public class CarModel implements ISubscriber{
 
     public CarModel(){
         observers = new ArrayList<>();
-        //updateObservers();
     }
 
     @Override
