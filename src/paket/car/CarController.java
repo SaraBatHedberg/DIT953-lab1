@@ -1,9 +1,10 @@
 package paket.car;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 /*
 * This class represents the Controller part in the MVC pattern.
@@ -15,111 +16,96 @@ public class CarController {
     // member fields:
 
     // The delay (ms) corresponds to 20 updates a sec (hz)
-    private final int delay = 50;
+    //private final int delay = 50;
     // The timer is started with a listener (see below) that executes the statements
     // each step between delays.
-    protected Timer timer = new Timer(delay, new CarController.TimerListener());
+    //protected Timer timer = new Timer(delay, new CarController.TimerListener());
     // The frame that represents this instance View of the MVC pattern
     //CarModel model = new CarModel();
-
     // A list of cars, modify if needed
-    protected ArrayList<Car> cars = new ArrayList<>();
+    //protected ArrayList<Car> cars = new ArrayList<>();
 
-    public ArrayList<Car> getCars() {
-        return cars;
-    }
-
+    // public ArrayList<Car> getCars() {
+    //    return cars;
+    // }
 
     /* Each step the TimerListener moves all the cars in the list. Change this method to your needs.
      * */
-    private class TimerListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            for (Car car : cars) {
-                car.move();
-                int x = (int) Math.round(car.getLocation()[0]);
-                int y = (int) Math.round(car.getLocation()[1]);
-                switch (car.getDirection()) {
-                    case UP -> {
-                        if (y >= 800 - 240 - 60) {
-                            invertDirection(car);
-                        }
-                    }
-                    case DOWN -> {
-                        if (y <= 0) {
-                            invertDirection(car);
-                        }
-                    }
-                    case LEFT -> {
-                        if (x <= 0) {
-                            invertDirection(car);
-                        }
-                    }
-                    case RIGHT -> {
-                        if (x >= 400) {
-                            invertDirection(car);
-                        }
-                    }
-                }
-            }
-            void invertDirection(Car car) {
-                car.turnLeft();
-                car.turnLeft();
-            }
+//    private class TimerListener implements ActionListener {
+//        public void actionPerformed(ActionEvent e) {
+//            for (Car car : cars) {
+//                car.move();
+//            }
+//        }
+//    }
+    CarModel model;
 
-        }
+    ControlPanel panel;
+    int gasAmount = 0;
+
+    public CarController(CarModel model, ControlPanel panel){
+        this.model = model;
+        this.panel = panel;
     }
 
-        turboOffButton.addActionListener(new ActionListener() {
+    public void init(){
+        panel.gasSpinner.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                gasAmount = (int) ((JSpinner)e.getSource()).getValue();
+            }
+        });
+
+        panel.turboOffButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            carC.turboOff();
+            model.turboOff();
         }
     });
 
-        turboOnButton.addActionListener(new ActionListener() {
+        panel.turboOnButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            carC.turboOn();
+            model.turboOn();
         }
     });
 
-        brakeButton.addActionListener(new ActionListener() {
+        panel.brakeButton.addActionListener(new ActionListener() {
         @Override
-        public void actionPerformed(ActionEvent e) { carC.brake(gasAmount); }
+        public void actionPerformed(ActionEvent e) { model.brake(gasAmount); }
     });
 
-        gasButton.addActionListener(new ActionListener() {
+        panel.gasButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            carC.gas(gasAmount);
+            model.gas(gasAmount);
         }
     });
 
-        startButton.addActionListener(new ActionListener() {
+        panel.startButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            carC.startEngine();
+            model.startEngine();
         }
     });
 
-        stopButton.addActionListener(new ActionListener() {
+        panel.stopButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            carC.stopEngine();
+            model.stopEngine();
         }
     });
 
-        liftBedButton.addActionListener(new ActionListener() {
+        panel.liftBedButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            carC.liftBed(gasAmount);
+            model.liftBed(gasAmount);
         }
     });
 
-        lowerBedButton.addActionListener(new ActionListener() {
+        panel.lowerBedButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            carC.lowerBed(gasAmount);
+            model.lowerBed(gasAmount);
         }
     });
-}
+}}

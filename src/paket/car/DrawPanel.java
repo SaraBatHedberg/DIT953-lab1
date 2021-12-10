@@ -21,17 +21,7 @@ public class DrawPanel extends JPanel{
         this.setPreferredSize(new Dimension(x, y));
         Color lightGreen = new Color(80, 115, 70);
         this.setBackground(lightGreen);
-        this.cc = cc;
-        // Print an error message in case file is not found with a try/catch block
-        try {
-            for (Car car: cc.getCars()) {
-                BufferedImage image = ImageIO.read(Objects.requireNonNull(DrawPanel.class.getResourceAsStream("pics/" + car.modelName + ".jpg")));
-                listan.add(image);
-            }
-        } catch (IOException ex)
-        {
-            ex.printStackTrace();
-        }
+        readImages();
     }
 
     // This method is called each time the panel updates/refreshes/repaints itself
@@ -43,6 +33,7 @@ public class DrawPanel extends JPanel{
                 Car currentCar = cc.getCars().get(i);
                 int distanceCars = 150;
                 g.drawImage(currentImage, (int)Math.round(currentCar.getLocation()[0]) + i* distanceCars, (int)Math.round(currentCar.getLocation()[1]), null);
+                model.borderControl();
                 model.updateObservers();
             }
     }

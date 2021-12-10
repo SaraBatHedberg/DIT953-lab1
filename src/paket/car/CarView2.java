@@ -1,3 +1,4 @@
+/*
 package paket.car;
 
 public class CarView2 {
@@ -66,6 +67,8 @@ public class CarView2 {
         }
     }
 
+
+
     private boolean checkIfCarSaab(Car car){
         return car.getClass() == Saab95.class;
     }
@@ -76,3 +79,4 @@ public class CarView2 {
 }
 
 }
+*/
