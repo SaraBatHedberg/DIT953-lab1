@@ -11,11 +11,10 @@ import javax.swing.*;
 
 public class DrawPanel extends JPanel {
     private final CarModel model;
-    CarController cc;
-    ArrayList<BufferedImage> listan = new ArrayList<>();
+    ArrayList<BufferedImage> imagesList = new ArrayList<>();
 
     // Initializes the panel and reads the images
-    public DrawPanel(int x, int y, CarController cc, CarModel model) {
+    public DrawPanel(int x, int y, CarModel model) {
         this.setDoubleBuffered(true);
         this.model = model;
         this.setPreferredSize(new Dimension(x, y));
@@ -24,13 +23,25 @@ public class DrawPanel extends JPanel {
         readImages();
     }
 
+    private void readImages(){
+        try {
+            for (Car car: model.getCars()) {
+                BufferedImage image = ImageIO.read(Objects.requireNonNull(DrawPanel.class.getResourceAsStream("pics/" + car.modelName + ".jpg")));
+                imagesList.add(image);
+            }
+        } catch (IOException ex)
+        {
+            ex.printStackTrace();
+        }
+    }
+
     // This method is called each time the panel updates/refreshes/repaints itself
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-            for (int i = 0; i < listan.size(); i++){
-                BufferedImage currentImage = listan.get(i);
-                Car currentCar = cc.getCars().get(i);
+            for (int i = 0; i < imagesList.size(); i++){
+                BufferedImage currentImage = imagesList.get(i);
+                Car currentCar = model.getCars().get(i);
                 int distanceCars = 150;
                 g.drawImage(currentImage, (int)Math.round(currentCar.getLocation()[0]) + i* distanceCars, (int)Math.round(currentCar.getLocation()[1]), null);
                 model.borderControl();

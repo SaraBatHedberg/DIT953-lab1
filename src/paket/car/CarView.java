@@ -25,16 +25,15 @@ public class CarView extends JFrame implements Observer{
     DrawPanel drawPanel;
 
     // Constructor
-    public CarView(String framename, CarController cc, CarModel model){
-        this.carC = cc;
-        this.drawPanel = new DrawPanel (X, Y-240, cc, model);
+    public CarView(String framename, CarModel model){
+        this.drawPanel = new DrawPanel (X, Y-240, model);
+        this.model = model;
         initComponents(framename);
         model.subscribe(this);
     }
 
     // Sets everything in place and fits everything
     private void initComponents(String title) {
-
         this.setTitle(title);
         this.setPreferredSize(new Dimension(X,Y));
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
@@ -47,15 +46,9 @@ public class CarView extends JFrame implements Observer{
         this.add(CPanel.gasPanel);
         this.add(CPanel);
         this.pack();
-
-        // Get the computer screen resolution
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        // Center the frame
-        this.setLocation(dim.width/2-this.getSize().width/2,
-                dim.height/2-this.getSize().height/2);
-        // Make the frame visible
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         this.setVisible(true);
-        // Make sure the frame exits when "x" is pressed
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 

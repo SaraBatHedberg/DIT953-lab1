@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 * modifying the model state and the updating the view.
  */
 
-public class CarController {
+public class CarController{
     // member fields:
 
     // The delay (ms) corresponds to 20 updates a sec (hz)
