@@ -14,7 +14,7 @@ public class Main {
         cc.cars.add(new Saab95("SAAAAAB"));
         cc.cars.add(new Scania("XXX999"));
         // Start a new view and send a reference of self
-        cc.frame = new CarView("CarSim 1.0", cc, model);
+        CarView view = new CarView("CarSim 1.0", cc, model);
 
 
         cc.timer.start();
