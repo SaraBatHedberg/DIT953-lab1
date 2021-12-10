@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
  * each of it's components.
  **/
 
-public class CarView extends JFrame implements Observer {
+public class CarView extends JFrame implements Observer{
     private static final int X = 800;
     private static final int Y = 800;
     private final Color background = new Color(80, 115, 70);
