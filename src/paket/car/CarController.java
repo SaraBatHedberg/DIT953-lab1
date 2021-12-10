@@ -26,7 +26,7 @@ public class CarController {
     // A list of cars, modify if needed
     protected ArrayList<Car> cars = new ArrayList<>();
 
-    public ArrayList<Car> getCars(){
+    public ArrayList<Car> getCars() {
         return cars;
     }
 
@@ -42,7 +42,7 @@ public class CarController {
                 int y = (int) Math.round(car.getLocation()[1]);
                 switch (car.getDirection()) {
                     case UP -> {
-                        if (y >= 800-240-60) {
+                        if (y >= 800 - 240 - 60) {
                             invertDirection(car);
                         }
                     }
@@ -68,84 +68,65 @@ public class CarController {
 
                 //model.updateObservers();
             }
-        }
-    }
-
-    // Calls the gas method for each car once
-    void gas(int amount) {
-        double gas = ((double) amount) / 100;
-        for (Car car : cars
-        ) {
-            car.gas(gas);
-        }
-    }
-
-    void brake(int amount) {
-        double brake = ((double) amount) / 100;
-        for (Car car : cars
-        ) {
-            car.brake(brake);
-        }
-    }
-
-    void turboOn (){
-        for (Car car : cars){
-            if (checkIfCarSaab(car)){
-                ((Saab95) car).setTurboOn();
-                System.out.println("Turbo on");
+            void invertDirection(Car car) {
+                car.turnLeft();
+                car.turnLeft();
             }
+
         }
     }
 
-    void turboOff (){
-        for (Car car : cars){
-            if (checkIfCarSaab(car)){
-                ((Saab95) car).setTurboOff();
-                System.out.println("Turbo Off");
-            }
+        turboOffButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            carC.turboOff();
         }
-    }
+    });
 
-    void liftBed(int amount) {
-        for (Car car : cars) {
-            if (checkIfCarScania(car)) {
-                ((Scania) car).raisePlatform(amount);
-                System.out.println("Lifted bed " + amount + " degrees");
-            }
+        turboOnButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            carC.turboOn();
         }
-    }
+    });
 
-    void lowerBed (int amount) {
-        for (Car car : cars) {
-            if (checkIfCarScania(car)) {
-                ((Scania) car).lowerPlatform(amount);
-                System.out.println("Lowered bed " + amount + " degrees");
-            }
+        brakeButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) { carC.brake(gasAmount); }
+    });
+
+        gasButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            carC.gas(gasAmount);
         }
-    }
+    });
 
-    void invertDirection(Car car) {
-        car.turnLeft();
-        car.turnLeft();
-    }
-
-    void startEngine() {
-        for (Car car : cars) {
-            car.startEngine();
+        startButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            carC.startEngine();
         }
-    }
+    });
 
-    void stopEngine() {
-        for (Car car : cars) {
-            car.stopEngine();
+        stopButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            carC.stopEngine();
         }
-    }
+    });
 
-    private boolean checkIfCarSaab(Car car){
-        return car.getClass() == Saab95.class;
-    }
+        liftBedButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            carC.liftBed(gasAmount);
+        }
+    });
 
-    private boolean checkIfCarScania(Car car){
-        return car.getClass() == Scania.class;
-    }
+        lowerBedButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            carC.lowerBed(gasAmount);
+        }
+    });
 }
