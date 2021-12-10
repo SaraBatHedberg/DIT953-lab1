@@ -15,13 +15,9 @@ public class Workshop <T extends Car> extends WorldObjects{
      */
     private final int capacity;
     /**
-     * Name of the workshop
-     */
-    private final String name;
-    /**
      * List of currently stored cars
      */
-    private ArrayList <T> listOfCars;
+    private final ArrayList <T> listOfCars;
     /**
      * Helper instance to measure distance
      */
@@ -31,7 +27,9 @@ public class Workshop <T extends Car> extends WorldObjects{
         this.x = x;
         this.y = y;
         this.capacity = capacity;
-        this.name = name;
+        /**
+         * Name of the workshop
+         */
         this.listOfCars = new ArrayList<>(capacity);
     }
 

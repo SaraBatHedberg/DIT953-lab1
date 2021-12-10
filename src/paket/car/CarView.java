@@ -19,7 +19,6 @@ public class CarView extends JFrame implements Observer {
     private static final int Y = 800;
     private final Color background = new Color(80, 115, 70);
     private final Color myRed = new Color(130, 51, 51);
-    private CarModel model22 = new CarModel();
     // The controller member
     CarController carC;
 
@@ -45,9 +44,9 @@ public class CarView extends JFrame implements Observer {
     // Constructor
     public CarView(String framename, CarController cc, CarModel model){
         this.carC = cc;
-        this.drawPanel = new DrawPanel (X, Y-240, cc);
+        this.drawPanel = new DrawPanel (X, Y-240, cc, model);
         initComponents(framename);
-        model22.subscribe(this);
+        model.subscribe(this);
     }
 
     // Sets everything in place and fits everything
@@ -76,7 +75,6 @@ public class CarView extends JFrame implements Observer {
         gasPanel.setLayout(new BorderLayout());
         gasPanel.add(gasLabel, BorderLayout.PAGE_START);
         gasPanel.add(gasSpinner, BorderLayout.PAGE_END);
-
         this.add(gasPanel);
 
         controlPanel.setLayout(new GridLayout(2,4));
@@ -91,12 +89,10 @@ public class CarView extends JFrame implements Observer {
         this.add(controlPanel);
         controlPanel.setBackground(background);
 
-
         startButton.setBackground(Color.lightGray);
         startButton.setForeground(background);
         startButton.setPreferredSize(new Dimension(X/5-15,200));
         this.add(startButton);
-
 
         stopButton.setBackground(myRed);
         stopButton.setForeground(Color.black);

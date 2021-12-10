@@ -10,14 +10,16 @@ import javax.swing.*;
 // This panel represents the animated part of the view with the car images.
 
 public class DrawPanel extends JPanel{
+    private final CarModel model;
     CarController cc;
     private final Color lightGreen = new Color(80, 115, 70);
     ArrayList<BufferedImage> listan = new ArrayList<>();
     private final int distanceCars = 150;
 
     // Initializes the panel and reads the images
-    public DrawPanel(int x, int y, CarController cc) {
+    public DrawPanel(int x, int y, CarController cc, CarModel model) {
         this.setDoubleBuffered(true);
+        this.model = model;
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(lightGreen);
         this.cc = cc;
@@ -41,7 +43,9 @@ public class DrawPanel extends JPanel{
             for (int i = 0; i < listan.size(); i++){
                 BufferedImage currentImage = listan.get(i);
                 Car currentCar = cc.getCars().get(i);
-                g.drawImage(currentImage, (int)Math.round(currentCar.getLocation()[0]) + i*distanceCars, (int)Math.round(currentCar.getLocation()[1]), null);
+                int distanceCars = 150;
+                g.drawImage(currentImage, (int)Math.round(currentCar.getLocation()[0]) + i* distanceCars, (int)Math.round(currentCar.getLocation()[1]), null);
+                model.updateObservers();
             }
 
     }

@@ -20,7 +20,6 @@ public class CarController {
     // each step between delays.
     protected Timer timer = new Timer(delay, new CarController.TimerListener());
     // The frame that represents this instance View of the MVC pattern
-    CarView frame;
     //CarModel model = new CarModel();
 
     // A list of cars, modify if needed
@@ -31,8 +30,7 @@ public class CarController {
     }
 
 
-    /* Each step the TimerListener moves all the cars in the list and tells the
-     * view to update its images. Change this method to your needs.
+    /* Each step the TimerListener moves all the cars in the list. Change this method to your needs.
      * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
